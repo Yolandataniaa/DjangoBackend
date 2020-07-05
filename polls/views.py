@@ -80,8 +80,10 @@ def login(request):
 
 def nilai(request):
     template = "polls/nilai.html"
+    return HttpResponse(Student.nilai1)
     return render(request, template)
 
 def rapot(request):
     template = "polls/rapot.html"
     return render(request, template)
+
