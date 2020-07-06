@@ -4,6 +4,10 @@
     <title>Nilai</title>
 </head>
 <body>
-    <h1>Ini Laman Nilai 1</h1>
+    <h1>Ini Laman Nilai</h1>
+
+    {% block content %}
+    <a href="{% url 'leaderboard'%}">Click here to logged out.</a>
+    {% endblock %}
 </body>
 </html>

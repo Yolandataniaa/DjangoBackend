@@ -16,7 +16,7 @@ def upload(request):
     template = "polls/upload.html"
 
     context = {
-        'order' : 'Order of CSV should be nim, nilaiminggu1, nilaiminggu2, nilaiminggu3, rapot.'
+        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.'
     }
 
     csv_file = request.FILES.get('file')
@@ -54,7 +54,7 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-def home(request):
+def leaderboard(request):
     template = "polls/leaderboard.html"
     return render(request, template)
 
@@ -64,7 +64,6 @@ def login(request):
 
 def nilai(request):
     template = "polls/nilai.html"
-    return HttpResponse(Student.nilai1)
     return render(request, template)
 
 def rapot(request):
