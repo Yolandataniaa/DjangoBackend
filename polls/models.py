@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # # Create your models here.
 # from django.contrib.auth.models import User
@@ -11,14 +12,15 @@ from django.db import models
 # user.save()
 
 class Student(models.Model):
-    name = models.CharField(max_length=200, null = True, default="")
+    user = models.OneToOneField(User, on_delete = models.CASCADE, null = True)
+
     nilai1 = models.IntegerField(default=0)
     nilai2 = models.IntegerField(default=0)
     nilai3 = models.IntegerField(default=0)
     rank = models.CharField(max_length=2, default="")
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 # class NilaiMinggu1(models.Model):
 #     student = models.OneToOneField(Student, on_delete = models.CASCADE)

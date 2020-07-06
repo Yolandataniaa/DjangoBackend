@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
 from .models import Student
+from django.contrib.auth.models import User
 # from .models import NilaiMinggu1
 # from .models import NilaiMinggu2
 # from .models import NilaiMinggu3
@@ -14,52 +15,35 @@ def upload(request):
 
     template = "polls/upload.html"
 
-    prompt = {
-        'order' : 'Order of CSV should be name, nilaiminggu1, nilaiminggu2, nilaiminggu3, rapot'
+    context = {
+        'order' : 'Order of CSV should be nim, nilaiminggu1, nilaiminggu2, nilaiminggu3, rapot.'
     }
 
-    if request.method =="GET":
-        return render(request, template, prompt)
+    csv_file = request.FILES.get('file')
 
-    csv_file = request.FILES['file']
+    if csv_file is not None:
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, "This is not a csv file")
 
-    if not csv_file.name.endswith('.csv'):
-        messages.error(request, "This is not a csv file")
-
-    data_Set = csv_file.read().decode('UTF-8')
-    io_string = io.StringIO(data_Set)
-    next(io_string)
-
-    #     s = Student.objects.create()
-    # nm1 =  NilaiMinggu1.objects.create(nilai1 = 0)
-    # s.nilaiminggu1 = nm1
-
-    # nm1.save()
-    # s.save()
+        data_Set = csv_file.read().decode('UTF-8')
+        io_string = io.StringIO(data_Set)
+        next(io_string)
     
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Student.objects.update_or_create(
-            name = column[0],
-            nilai1 = column[1],
-            nilai2 = column[2],
-            nilai3 = column[3],
-            rank = column[4]
-        )   
-    
-        #     _, created = Student.objects.update_or_create(
-        #     name = column[0]
-        # )   
-        # _, created = NilaiMinggu1.objects.update_or_create(
-        #     nilai1 = column[1]
-        # ) 
-        # _, created = NilaiMinggu2.objects.update_or_create(
-        #     nilai2 = column[2]
-        # )                 
-        # _, created = NilaiMinggu3.objects.update_or_create(
-        #     nilai3 = column[3]
-        # )   
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            usr, created = User.objects.get_or_create(
+                username = column[0]
+            )
 
-    context = {}
+            if(created):
+                Student.objects.create(user = usr)
+
+            usr.student.nilai1 = column[1]
+            usr.student.nilai2 = column[2]
+            usr.student.nilai3 = column[3]
+
+            usr.save()
+            usr.student.save()
+
     return render(request, template, context)
 
 def index(request):
