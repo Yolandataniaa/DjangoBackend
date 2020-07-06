@@ -5,6 +5,8 @@
 </head>
 <body>
     <h1>StudentList</h1>
-    {{latest_student_list}}
+    {% for student in latest_student_list %}
+        {{ student }}
+    {% endfor %}
 </body>
 </html>

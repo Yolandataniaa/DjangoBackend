@@ -48,11 +48,11 @@ def upload(request):
 
 def index(request):
     latest_student_list = Student.objects.all()
-    template = loader.get_template('polls/index.html')
+    template = "polls/index.html"
     context = {
         'latest_student_list': latest_student_list,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, template, context)
 
 def home(request):
     template = "polls/leaderboard.html"
