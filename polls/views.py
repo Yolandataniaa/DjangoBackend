@@ -1,15 +1,23 @@
 import csv, io
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
 from .models import Student
 from django.contrib.auth.models import User
-# from .models import NilaiMinggu1
-# from .models import NilaiMinggu2
-# from .models import NilaiMinggu3
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 
-# Create your views here.
+def registerPage(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form' : form}
+    return render(request, 'polls/register.html', context)
 
 def upload(request):
 
@@ -40,19 +48,35 @@ def upload(request):
             usr.student.nilai1 = column[1]
             usr.student.nilai2 = column[2]
             usr.student.nilai3 = column[3]
+            usr.set_password(column[4])
+            usr.first_name = column[5]
 
+            usr.is_active = True
             usr.save()
             usr.student.save()
 
     return render(request, template, context)
 
-def index(request):
-    latest_student_list = Student.objects.all()
-    template = "polls/index.html"
-    context = {
-        'latest_student_list': latest_student_list,
-    }
-    return render(request, template, context)
+
+
+# def registration_view(request):
+#     context = {}
+#     if request.POST:
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             raw_password = form.cleaned_data.get('password1')
+#             account = authenticate(password = password1)
+#             login(request, account)
+#             return redirect('leaderboard')
+#         else:
+#             context['registration_form'] = form
+#     else:
+#         form = RegistrationForm()
+#         context['registration_form'] = form
+#     return render(request, 'registration/register.html', context)
+
+
 
 def leaderboard(request):
     template = "polls/leaderboard.html"
@@ -63,7 +87,11 @@ def login(request):
     return render(request, template)
 
 def nilai(request):
+    # nilai1 = request.user.student.nilai1
     template = "polls/nilai.html"
+    # context = {
+    #     'nilai1': nilai1,
+    # }    
     return render(request, template)
 
 def rapot(request):

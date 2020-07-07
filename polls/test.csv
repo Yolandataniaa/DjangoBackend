@@ -1,8 +1,8 @@
-user, nilai1, nilai2, nilai3, rank
-Selvi, 2, 3, 4, B
-Indi, 2, 3, 4, B
-Budi, 4, 5, 6, A
-yola, 2, 3, 4, B
-Yol, 2, 3, 4, B
-jack, 2, 3, 4, B
-Saleh, 2, 3, 4, B
+user, nilai1, nilai2, nilai3, password, first_name, rank
+Selvi, 2, 3, 4, skullers_001, Selvi, B
+Indi, 2, 3, 4, skullers_002, Indi, B
+Budi, 4, 5, 6, skullers_003, Budi, A
+yola, 2, 3, 4, skullers_004,  yola, B
+Yol, 2, 3, 4, skullers_005, Yol, B
+jack, 2, 3, 4, skullers_006, jack, B
+Saleh, 2, 3, 4, skullers_007, Saleh, B

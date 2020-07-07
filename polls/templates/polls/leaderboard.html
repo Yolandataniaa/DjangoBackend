@@ -6,8 +6,11 @@
 <body>
     <h1>Ini Laman LeaderBoard</h1>
     {% block content %}
-    <p>Logged out!</p>  
-    <a href="{% url 'login'%}">Click here to login again.</a>
+    <p>Do not have account?</p>  
+    <a href="{% url 'register'%}">Click here to register.</a>
+    <br>
+    <p>Already have account?</p>
+    <a href="{% url 'login'%}">Click here to login.</a>
     {% endblock %}
 </body>
 </html>
