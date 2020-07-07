@@ -1,8 +1,9 @@
-user, nilai1, nilai2, nilai3, password, first_name, rank
-Selvi, 2, 3, 4, skullers_001, Selvi, B
-Indi, 2, 3, 4, skullers_002, Indi, B
-Budi, 4, 5, 6, skullers_003, Budi, A
-yola, 2, 3, 4, skullers_004,  yola, B
-Yol, 2, 3, 4, skullers_005, Yol, B
-jack, 2, 3, 4, skullers_006, jack, B
-Saleh, 2, 3, 4, skullers_007, Saleh, B
+user, nilai1, nilai2, nilai3,  first_name, rank
+13319001, 2, 3, 4, Yolanda, B
+13319002, 2, 3, 4,  Selvi, B
+13319003, 2, 3, 4, Indi, B
+13319004, 4, 5, 6, Budi, A
+13319005, 2, 3, 4,  yola, B
+13319006, 2, 3, 4, Yol, B
+13319007, 2, 3, 4, jack, B
+13319008, 2, 3, 4, Saleh, B

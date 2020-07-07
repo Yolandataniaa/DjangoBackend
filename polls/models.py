@@ -2,16 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-# # Create your models here.
-# from django.contrib.auth.models import User
-# # Create user and save to the database
-# user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
-
-# # Update fields and then save again
-# user.first_name = 'John'
-# user.last_name = 'Citizen'
-# user.save()
-
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 

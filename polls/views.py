@@ -14,10 +14,13 @@ def registerPage(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
+            
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(request,'Account was created for ' + user)
+
+            # messages.success(request,'Account was created for ' + user)
             return redirect('login')
+
 
     context = {'form' : form}
     return render(request, 'polls/register.html', context)
@@ -47,38 +50,17 @@ def upload(request):
 
             if(created):
                 Student.objects.create(user = usr)
-
+            
             usr.student.nilai1 = column[1]
             usr.student.nilai2 = column[2]
             usr.student.nilai3 = column[3]
-            usr.set_password(column[4])
-            usr.first_name = column[5]
+            usr.first_name = column[4]
 
             usr.is_active = True
             usr.save()
             usr.student.save()
 
     return render(request, template, context)
-
-
-
-# def registration_view(request):
-#     context = {}
-#     if request.POST:
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             raw_password = form.cleaned_data.get('password1')
-#             account = authenticate(password = password1)
-#             login(request, account)
-#             return redirect('leaderboard')
-#         else:
-#             context['registration_form'] = form
-#     else:
-#         form = RegistrationForm()
-#         context['registration_form'] = form
-#     return render(request, 'registration/register.html', context)
-
 
 
 def leaderboard(request):
@@ -90,14 +72,19 @@ def login(request):
     return render(request, template)
 
 def nilai(request):
-    # nilai1 = request.user.student.nilai1
+    current_user = request.user
     template = "polls/nilai.html"
-    # context = {
-    #     'nilai1': nilai1,
-    # }    
-    return render(request, template)
+    context = {
+        'nilai': current_user.student.nilai1,
+    }    
+    return render(request, template, context)
 
 def rapot(request):
+    current_user = request.user
     template = "polls/rapot.html"
-    return render(request, template)
-
+    context = {
+        'nilai1': current_user.student.nilai1,
+        'nilai2': current_user.student.nilai2,
+        'nilai3': current_user.student.nilai3,
+    }    
+    return render(request, template, context)
