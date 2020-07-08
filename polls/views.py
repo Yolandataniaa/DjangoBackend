@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
-from .models import Student
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ObjectDoesNotExist
+from .models import Student
 from .forms import CreateUserForm
 
 def registerPage(request):
@@ -15,8 +16,11 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             
-            form.save()
-            user = form.cleaned_data.get('username')
+            user = form.save()
+
+            s = Student()
+            s.user = user
+            s.save()
 
             # messages.success(request,'Account was created for ' + user)
             return redirect('login')
@@ -26,14 +30,10 @@ def registerPage(request):
     return render(request, 'polls/register.html', context)
 
 def upload(request):
-
-    template = "polls/upload.html"
-
-    context = {
-        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.'
-    }
-
     csv_file = request.FILES.get('file')
+    unsaved = 0
+    unsaved_str = ""
+    template = "polls/upload.html"
 
     if csv_file is not None:
         if not csv_file.name.endswith('.csv'):
@@ -44,21 +44,31 @@ def upload(request):
         next(io_string)
     
         for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-            usr, created = User.objects.get_or_create(
-                username = column[0]
-            )
-
-            if(created):
-                Student.objects.create(user = usr)
+            try:
+                usr = User.objects.get(username = column[0])
+            except ObjectDoesNotExist:
+                usr = None
             
-            usr.student.nilai1 = column[1]
-            usr.student.nilai2 = column[2]
-            usr.student.nilai3 = column[3]
-            usr.first_name = column[4]
+            if usr is not None:
+                usr.student.nilai1 = column[1]
+                usr.student.nilai2 = column[2]
+                usr.student.nilai3 = column[3]
+                usr.first_name = column[4]
 
-            usr.is_active = True
-            usr.save()
-            usr.student.save()
+                usr.is_active = True
+                usr.save()
+                usr.student.save()
+
+            else:
+                unsaved = unsaved + 1
+
+    if unsaved > 0 :
+        unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
+
+    context = {
+        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.',
+        'unsaved' : unsaved_str
+    }
 
     return render(request, template, context)
 
