@@ -24,7 +24,7 @@
     <div class="left order-0">
       <div class="m-3">
         <h1 class="text-center sm">Register</h1>
-        <form action="" method="post">
+        <form action="{% url 'register'%}" method="post">
           {% csrf_token %}
           <div class="form-group">
             <label for="nim">NIM</label>

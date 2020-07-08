@@ -1,7 +1,7 @@
 import csv, io
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -23,7 +23,7 @@ def registerPage(request):
             s.user = user
             s.save()
 
-            # messages.success(request,'Account was created for ' + user)
+            messages.success(request,'Account was created for ' + user)
             return redirect('login')
 
 
@@ -31,6 +31,9 @@ def registerPage(request):
     return render(request, 'polls/register.html', context)
 
 def upload(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden ("Only for staffs.")
+
     csv_file = request.FILES.get('file')
     unsaved = 0
     unsaved_str = ""
@@ -87,6 +90,9 @@ def leaderboard(request):
     return render(request, template)
 
 def nilai(request):
+    if not request.user.is_authenticated:
+        return HttpResponseForbidden ("nope.")
+
     current_user = request.user
     template = "polls/nilai.html"
     context = {
@@ -102,6 +108,9 @@ def nilai(request):
     return render(request, template, context)
 
 def rapot(request):
+    if not request.user.is_authenticated:
+        return HttpResponseForbidden ("nope.")
+
     current_user = request.user
     template = "polls/rapot.html"
     context = {
