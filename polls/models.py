@@ -9,8 +9,13 @@ class Student(models.Model):
     nilai2 = models.IntegerField(default=0)
     nilai3 = models.IntegerField(default=0)
     nilai4 = models.IntegerField(default=0)
-    keaktifan = models.CharField(max_length=2, default="")
-    pemahamanMateri = models.CharField(max_length=2, default="")
+    kepemimpinan = models.IntegerField(default=0)
+    nasionalisme = models.IntegerField(default=0)
+    kebermanfaatan = models.IntegerField(default=0)
+    keilmuan  = models.IntegerField(default=0)
+    adaptif = models.IntegerField(default=0)
+    solidaritas = models.IntegerField(default=0)
+    kolaboratif = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username

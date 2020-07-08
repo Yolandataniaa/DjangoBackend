@@ -56,8 +56,13 @@ def upload(request):
                 usr.student.nilai2 = column[3]
                 usr.student.nilai3 = column[4]
                 usr.student.nilai4 = column[5]
-                usr.student.keaktifan = column[6]
-                usr.student.pemahamanMateri = column[7]
+                usr.student.kepemimpinan = column[6]
+                usr.student.nasionalisme = column[7]
+                usr.student.kebermanfaatan = column[8]
+                usr.student.keilmuan = column[9]
+                usr.student.adaptif = column[10]
+                usr.student.solidaritas = column[11]
+                usr.student.kolaboratif = column[12]
 
                 usr.is_active = True
                 usr.save()
@@ -86,6 +91,13 @@ def nilai(request):
     template = "polls/nilai.html"
     context = {
         'nilai': current_user.student.nilai1,
+        'kepemimpinan': current_user.student.kepemimpinan,
+        'nasionalisme': current_user.student.nasionalisme,
+        'kebermanfaatan': current_user.student.kebermanfaatan,
+        'keilmuan': current_user.student.keilmuan,
+        'adaptif': current_user.student.adaptif,
+        'solidaritas': current_user.student.solidaritas,
+        'kolaboratif': current_user.student.kolaboratif,
     }    
     return render(request, template, context)
 
@@ -93,10 +105,12 @@ def rapot(request):
     current_user = request.user
     template = "polls/rapot.html"
     context = {
-        'nilai1': current_user.student.nilai1,
-        'nilai2': current_user.student.nilai2,
-        'nilai3': current_user.student.nilai3,
-        'keaktifan': current_user.student.keaktifan,
-        'pemahamanMateri': current_user.student.pemahamanMateri,
+        'kepemimpinan': current_user.student.kepemimpinan,
+        'nasionalisme': current_user.student.nasionalisme,
+        'kebermanfaatan': current_user.student.kebermanfaatan,
+        'keilmuan': current_user.student.keilmuan,
+        'adaptif': current_user.student.adaptif,
+        'solidaritas': current_user.student.solidaritas,
+        'kolaboratif': current_user.student.kolaboratif,
     }    
     return render(request, template, context)
