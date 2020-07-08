@@ -8,7 +8,9 @@ class Student(models.Model):
     nilai1 = models.IntegerField(default=0)
     nilai2 = models.IntegerField(default=0)
     nilai3 = models.IntegerField(default=0)
-    rank = models.CharField(max_length=2, default="")
+    nilai4 = models.IntegerField(default=0)
+    keaktifan = models.CharField(max_length=2, default="")
+    pemahamanMateri = models.CharField(max_length=2, default="")
 
     def __str__(self):
         return self.user.username

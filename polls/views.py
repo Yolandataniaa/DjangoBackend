@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Student
 from .forms import CreateUserForm
+from django.conf.urls.static import static
 
 def registerPage(request):
     form = CreateUserForm()
@@ -50,10 +51,13 @@ def upload(request):
                 usr = None
             
             if usr is not None:
-                usr.student.nilai1 = column[1]
-                usr.student.nilai2 = column[2]
-                usr.student.nilai3 = column[3]
-                usr.first_name = column[4]
+                usr.first_name = column[1]
+                usr.student.nilai1 = column[2]
+                usr.student.nilai2 = column[3]
+                usr.student.nilai3 = column[4]
+                usr.student.nilai4 = column[5]
+                usr.student.keaktifan = column[6]
+                usr.student.pemahamanMateri = column[7]
 
                 usr.is_active = True
                 usr.save()
@@ -77,10 +81,6 @@ def leaderboard(request):
     template = "polls/leaderboard.html"
     return render(request, template)
 
-def login(request):
-    template = "polls/login.html"
-    return render(request, template)
-
 def nilai(request):
     current_user = request.user
     template = "polls/nilai.html"
@@ -96,5 +96,7 @@ def rapot(request):
         'nilai1': current_user.student.nilai1,
         'nilai2': current_user.student.nilai2,
         'nilai3': current_user.student.nilai3,
+        'keaktifan': current_user.student.keaktifan,
+        'pemahamanMateri': current_user.student.pemahamanMateri,
     }    
     return render(request, template, context)

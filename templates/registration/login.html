@@ -1,4 +1,28 @@
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../polls/static/registration/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="../../polls/static/registration/css/custom.css" />
+    <link rel="stylesheet" href="../../polls/static/registration/css/login.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <title>Login</title>
+  </head>
+
+  {% block content %}
 
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
@@ -9,32 +33,58 @@
       <p>Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
     {% else %}
-      <p>Please login to see this page.</p>
     {% endif %}
   {% endif %}
-  
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-  
-  <br>
-  <p>Do not have account?</p>  
-  <a href="{% url 'register'%}">Click here to register.</a>
-  <br>
-  
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-  
-{% endblock %}
+
+  <body class="d-flex">
+    <div class="left">
+      <h1>Login</h1>
+    </div>
+    <div class="right">
+      <div class="m-3">
+        <h1 class="text-center sm">Login</h1>
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="nim">NIM</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan NIM" />
+            <small class="form-text text-muted">Ex. 13319001</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                name="password1"
+                id="password"
+                class="form-control"
+                data-toggle="password"
+                placeholder="Masukkan Password"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-eye"></i></span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom-dark">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <br>
+    <p>Do not have account?</p>  
+    <a href="{% url 'register'%}">Click here to register.</a>
+    <br>
+
+    
+  {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../../polls/static/registration/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../../polls/static/registration/js/popper.min.js"></script>
+    <script src="../../polls/static/registration/js/bootstrap.min.js"></script>
+
+    <script src="../../polls/static/registration/js/bootstrap-show-password.min.js"></script>
+  </body>
+</html>
