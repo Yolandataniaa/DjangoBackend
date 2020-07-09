@@ -23,7 +23,6 @@ def registerPage(request):
             s.user = user
             s.save()
 
-            messages.success(request,'Account was created for ' + user)
             return redirect('login')
 
 

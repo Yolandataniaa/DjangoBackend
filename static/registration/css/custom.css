@@ -32,6 +32,7 @@ body {
 /* BUTTON */
 .btn {
   font-family: "piratesbayregular", cursive;
+  box-shadow: none !important;
 }
 
 .btn-custom-light {

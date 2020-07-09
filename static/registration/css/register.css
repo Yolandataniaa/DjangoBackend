@@ -33,8 +33,11 @@ h1 {
     height: 100vh;
   }
 
-  .sm {
-    display: none;
+  .right img {
+    position: fixed;
+    bottom: 0;
+    right: -400px;
+    opacity: 0.6;
   }
 }
 
