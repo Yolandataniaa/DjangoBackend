@@ -1,0 +1,209 @@
+/* Small devices (landscape phones, 576px and up) */
+/* @media (min-width: 576px) { ... } */
+
+/* Medium devices (tablets, 768px and up) */
+
+*,
+*::after,
+*::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+html{
+  font-size: 62.5%;
+  /* saya pakai rem biar biasain aja, di atas udah diganti 1rem = 10px */
+}
+
+/* Font */
+@font-face {
+  font-family: "piratesbayregular";
+  src: url("../font/piratesbay-webfont.woff2") format("woff2"),
+    url("../font/piratesbay-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "forumregular";
+  src: url("../font/forum-regular-webfont.woff2") format("woff2"),
+    url("../font/forum-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  box-sizing: border-box;
+  color: #F9F871;
+  font-family: forumregular, cursive;
+  font-size: 2rem;
+  margin-top: 6.4rem !important;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: piratesbayregular, cursive;
+}
+/* Navbar */
+.bg-custom {
+  background-color: #322338;
+}
+
+.navbar-brand h4 {
+  font-size: 2.4rem;
+}
+
+/* Custom Button */
+.btn-custom {
+  background-color: #fff;
+  color: #322338;
+  font-family: piratesbayregular, cursive;
+}
+.btn-custom:hover {
+  background-color: #eee;
+}
+
+/* Icon */
+.icon {
+  color: #fff !important;
+}
+
+/* Leaderboard */
+.leaderboard{
+  width: 100vw !important;
+  /* margin: 0 auto 10rem auto;  */
+  align-items: center;
+}
+.leaderboard span{
+  display: inline-block;
+}
+.leaderboard-header{
+  width: 80%;
+  margin: 0 auto 1rem auto;
+  height: 15rem;
+  background-color: #322338;
+  margin: 1rem auto;
+  border-radius: 1rem;
+}
+img.trophy-img{
+  height: 15rem;
+  width: 15rem;
+  float: left;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+h2.leaderboard-title{
+  /* display: inline-block; */
+  font-size: 4rem;
+}
+span.header-span{
+  width: 70%;
+}
+
+.leaderboard-row{
+  width: 80%;
+  margin: 0 auto 1rem auto;
+  background-color: #6D3C55;
+  height: 10rem;
+  border-radius: 1rem;
+  padding-top: 1.5rem;
+  position: relative;
+}
+.player-rank-number{
+  font-family: piratesbayregular, cursive;
+  width: 5rem;
+  text-align: center;
+  font-size: 130%;
+  position: absolute;
+  left: 1.5%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.player-profile{
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.player-profile img{
+  width: 7rem;
+  height: 7rem;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+.player-name{
+  position: relative;
+  top: 0.6rem;
+  display: inline-block;
+  font-size: 3rem;
+}
+.player-level{
+  font-family: piratesbayregular, cursive;
+  position: absolute;
+  left: 59%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.player-level img{
+  width: 7rem;
+  height: 7rem;
+  margin-right: 1.2rem;
+}
+.level-name{
+  position: relative;
+  top: 0.1rem;
+  display: inline-block;
+  font-size: 130%;
+}
+
+.player-exp{
+  text-align: end;
+  font-weight: 500;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+
+/* Footer */
+footer {
+  background-color: #322338;
+  color: #fff;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.8rem;
+  line-height: 0.8rem;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer img {
+  margin-right: 0.5rem;
+}
+
+footer .ig a {
+  margin-right: 2rem;
+}
+
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) { ... } */
+
+/* Extra large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) { ... } */
