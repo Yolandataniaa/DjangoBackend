@@ -26,12 +26,13 @@ body {
 }
 
 .bg-custom {
-  background-color: #322338;
+  background-color: var(--custom);
 }
 
 /* BUTTON */
 .btn {
   font-family: "piratesbayregular", cursive;
+  box-shadow: none !important;
 }
 
 .btn-custom-light {
