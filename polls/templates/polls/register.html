@@ -11,16 +11,16 @@
 
   {% block content %}
     <!-- CSS -->
-    <link rel="stylesheet" href="../../static/registration/css/bootstrap.min.css" /> 
-    <link rel="stylesheet" href="../../static/registration/css/custom.css" />
-    <link rel="stylesheet" href="../../static/registration/css/register.css"/>
+    <link rel="stylesheet" href="{% static "registration/css/bootstrap.min.css" %}" /> 
+    <link rel="stylesheet" href="{% static "registration/css/custom.css" %}" />
+    <link rel="stylesheet" href="{% static "registration/css/register.css" %}" />
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
     <title>Register</title>
   </head>
     <body class="d-flex">
       <div class="right order-md-1">
-        <img src="../../static/registration/img/logo_sekolah_skullers.png" alt="sekolah-skullers">
+        <img src="{% static "registration/img/logo_sekolah_skullers.png" %}" alt="sekolah-skullers">
       </div>
       <div class="left order-0">
         <div class="m-3">
@@ -94,11 +94,11 @@
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../../static/registration/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="../../static/registration/js/popper.min.js"></script>
-    <script src="../../static/registration/js/bootstrap.min.js"></script>
+    <script src="{% static "registration/js/jquery-3.5.1.slim.min.js" %}"></script>
+    <script src="{% static "registration/js/popper.min.js" %}"></script>
+    <script src="{% static "registration/js/bootstrap.min.js" %}"></script>
 
-    <script src="../../static/registration/js/bootstrap-show-password.min.js"></script>
+    <script src="{% static "registration/js/bootstrap-show-password.min.js" %}"></script>
 
 
   </body>
