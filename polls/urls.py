@@ -6,5 +6,6 @@ urlpatterns = [
     path('nilai/', views.nilai, name = 'nilai'),
     path('rapot/', views.rapot, name = 'rapot'),
     path('upload-csv/', views.upload, name='upload'),
-    path('register/', views.registerPage, name='register')
+    path('register/', views.registerPage, name='register'),
+    path('profile/', views.profile, name='profile')
 ]

@@ -1,11 +1,11 @@
-user,first_name,last_name, xp, hp, nilai1,nilai2,nilai3,nilai4,kepemimpinan,nasionalisme,kebermanfaatan,keilmuan,adaptif,solidaritas,kolaboratif
-13319001, Yol, Yolanda Tania, 200, 100, 3, 4, 5, 6, 45, 34, 34, 54, 54, 13, 53
-13319002, Yola,Yolanda Tania, 200, 100, 2, 3, 4, 5, 45, 34, 34, 54, 54, 13,  53
-13319003, Yolan,Yolanda Tania, 200, 100, 3, 6, 8, 7, 45, 34, 34, 54, 54, 13, 53
-13319004, Yoland,Yolanda Tania, 200, 100, 4, 2, 5, 7, 45, 34, 34, 54, 54, 13, 53
-13319005, Yolanda,Yolanda Tania, 200, 100, 5, 3, 6, 4, 45, 34, 34, 54, 54, 13, 53
-13319006, Sel,Yolanda Tania, 200, 100, 1, 2, 3, 4, 45, 34, 34, 54, 54, 13, 53
-13319007, Selv,Yolanda Tania, 200, 100, 4, 6, 3, 2, 45, 34, 34, 54, 54, 13, 53
-13319008, Selvi,Yolanda Tania, 200, 100, 1, 5, 7, 6, 45, 34, 34, 54, 54, 13, 53
-13319009, Purcell,Yolanda Tania, 200, 100, 7, 3, 4, 2, 45, 34, 34, 54, 54, 13, 53
-13319010, Saleh,Yolanda Tania, 200, 100, 3, 4, 5, 6, 45, 34, 34, 54, 54, 13, 53
+user, nomor, first_name,last_name, xp, hp, level, nilai1,nilai2,nilai3,nilai4,kepemimpinan,nasionalisme,kebermanfaatan,keilmuan,adaptif,solidaritas,kolaboratif
+13319001,1, Yol, Yolanda Tania, 80, 100,First Mate, 3, 4, 5, 6, 45, 34, 34, 54, 54, 13, 53
+13319002,2, Yola,Yolanda Tania, 70, 100,Sailors, 2, 3, 4, 5, 45, 34, 34, 54, 54, 13,  53
+13319003,3, Rei, Reinard Rahardian, 40, 100,First Mate,  3, 6, 8, 7, 45, 34, 34, 54, 54, 13, 53
+13319004,4, Yoland, Asdfghjkl, 60, 100,Sailors, 4, 2, 5, 7, 45, 34, 34, 54, 54, 13, 53
+13319005,5, Yolanda,Yolanda Tania, 40, 100,First Mate, 5, 3, 6, 4, 45, 34, 34, 54, 54, 13, 53
+13319006,6, Sel,Yolanda Tania, 40, 100,Sailors, 1, 2, 3, 4, 45, 34, 34, 54, 54, 13, 53
+13319007,7, Selv,Yolanda Tania, 40, 100,First Mate, 4, 6, 3, 2, 45, 34, 34, 54, 54, 13, 53
+13319008,8, Selvi,Yolanda Tania, 40, 100,Sailors, 1, 5, 7, 6, 45, 34, 34, 54, 54, 13, 53
+13319009,9, Purcell,Yolanda Tania, 40, 100,First Mate, 7, 3, 4, 2, 45, 34, 34, 54, 54, 13, 53
+13319010,10, Saleh,Yolanda Tania, 40, 100,Sailors, 3, 4, 5, 6, 45, 34, 34, 54, 54, 13, 53

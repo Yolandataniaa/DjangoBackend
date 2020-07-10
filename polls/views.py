@@ -53,21 +53,23 @@ def upload(request):
                 usr = None
             
             if usr is not None:
-                usr.first_name = column[1]
-                usr.last_name = column[2]
-                usr.student.xp = column[3]
-                usr.student.hp = column[4]
-                usr.student.nilai1 = column[5]
-                usr.student.nilai2 = column[6]
-                usr.student.nilai3 = column[7]
-                usr.student.nilai4 = column[8]
-                usr.student.kepemimpinan = column[9]
-                usr.student.nasionalisme = column[10]
-                usr.student.kebermanfaatan = column[11]
-                usr.student.keilmuan = column[12]
-                usr.student.adaptif = column[13]
-                usr.student.solidaritas = column[14]
-                usr.student.kolaboratif = column[15]
+                usr.student.nomor = column[1]
+                usr.first_name = column[2]
+                usr.last_name = column[3]
+                usr.student.xp = column[4]
+                usr.student.hp = column[5]
+                usr.student.level = column[6]
+                usr.student.nilai1 = column[7]
+                usr.student.nilai2 = column[8]
+                usr.student.nilai3 = column[9]
+                usr.student.nilai4 = column[10]
+                usr.student.kepemimpinan = column[11]
+                usr.student.nasionalisme = column[12]
+                usr.student.kebermanfaatan = column[13]
+                usr.student.keilmuan = column[14]
+                usr.student.adaptif = column[15]
+                usr.student.solidaritas = column[16]
+                usr.student.kolaboratif = column[17]
 
                 usr.is_active = True
                 usr.save()
@@ -89,6 +91,22 @@ def upload(request):
 
 def leaderboard(request):
     template = "polls/leaderboard.html"
+    user1 = User.objects.get(username='13319002')
+    user2 = User.objects.get(username='13319003')
+    user3 = User.objects.get(username='13319004')
+    context = {
+        'user1' : user1,
+        'user2' : user2,
+        'user3' : user3,
+    }
+    return render(request, template, context)
+
+def profile(request):
+    template = "polls/profile.html"
+    context = {
+        'all_entries' : User.objects.all(),
+    }
+    
     return render(request, template)
 
 def nilai(request):

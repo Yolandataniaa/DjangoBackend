@@ -1,25 +1,27 @@
 /* Add some shadows to create a card effect */
 .card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
   background: var(--custom);
   color: #fff;
   margin-bottom: 2rem;
 }
 
-.card:hover{
-    /* box-shadow: 0px 10px 36px 4px rgba(131, 131, 131, 0.6); */
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
-    /* background: var(--custom-hover); */
-    transition: box-shadow 0.15s;
+.card:hover {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 1);
+  transition: box-shadow 0.15s;
 }
 
 .card-body h5 {
   font-family: "piratesbayregular", cursive;
 }
 
-.card-body img {
-  filter: drop-shadow(0 0 0.1rem rgba(255, 255, 255, 0.5));
+h5.bar {
+  display: inline-block;
+  width: 30px !important;
+}
+
+.card .progress {
+  width: 100%;
 }
 
 .pagination a {
