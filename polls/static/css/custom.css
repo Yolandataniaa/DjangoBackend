@@ -1,0 +1,54 @@
+/* FONT */
+@font-face {
+  font-family: "piratesbayregular";
+  src: url("../font/piratesbay-webfont.woff2") format("woff2"),
+    url("../font/piratesbay-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "forumregular";
+  src: url("../font/forum-regular-webfont.woff2") format("woff2"),
+    url("../font/forum-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "forumregular", cursive;
+}
+
+/* CUSTOM COLOR */
+:root {
+  --custom: #322338;
+  --custom-hover: #322338d7;
+}
+
+.bg-custom {
+  background-color: var(--custom);
+}
+
+/* BUTTON */
+.btn {
+  font-family: "piratesbayregular", cursive;
+  box-shadow: none !important;
+}
+
+.btn-custom-light {
+  background-color: #fff;
+  color: var(--custom);
+}
+
+.btn-custom-light:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-custom-dark {
+  background-color: var(--custom);
+  color: #fff !important;
+}
+
+.btn-custom-dark:hover {
+  background-color: var(--custom-hover);
+}
