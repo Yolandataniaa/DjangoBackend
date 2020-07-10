@@ -9,97 +9,91 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-  {% block content %}
     <!-- CSS -->
-    <link rel="stylesheet" href="../../static/registration/css/bootstrap.min.css" /> 
-    <link rel="stylesheet" href="../../static/registration/css/custom.css" />
-    <link rel="stylesheet" href="../../static/registration/css/register.css"/>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} " />
+
+    <link rel="stylesheet" href=" {% static 'css/custom.css' %} " />
+    <link rel="stylesheet" href=" {% static 'css/register.css' %} " />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <title>Register</title>
   </head>
-    <body class="d-flex">
-      <div class="right order-md-1">
-        <img src="../../static/registration/img/logo_sekolah_skullers.png" alt="sekolah-skullers">
-      </div>
-      <div class="left order-0">
-        <div class="m-3">
-          <h1 class="text-center">Register</h1>
-          <form action="{% url 'register'%}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="nim">NIM</label>
+  <body class="d-flex">
+    <div class="right order-md-1">
+      <img src=" {% static 'img/logo_sekolah_skullers.png' %} " alt="sekolah-skullers">
+    </div>
+    <div class="left order-0">
+      <div class="m-3">
+        <h1 class="text-center">Register</h1>
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="nim">NIM</label>
+            <input
+              type="text"
+              class="form-control"
+              name="{{form.username.html_name}}"
+              id="{{form.username.id_for_label}}"
+              placeholder="Masukkan NIM"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="{{form.email.html_name}}"
+              id="{{form.email.id_for_label}}"
+              placeholder="Masukkan Alamat Email"
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="password">Password</label>
+            <div class="input-group">
               <input
-                type="text"
+                type="password"
+                name="{{form.password1.html_name}}"
+                id="{{form.password1.id_for_label}}"
                 class="form-control"
-                name="{{form.username.html_name}}"
-                id="{{form.username.id_for_label}}"
-                placeholder="Masukkan NIM"
+                data-toggle="password"
+                placeholder="Masukkan Password"
               />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                name="{{form.email.html_name}}"
-                id="{{form.email.id_for_label}}"
-                placeholder="Masukkan Alamat Email"
-              />
-            </div>
-            <div class="form-group mb-2">
-              <label for="password">Password</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  name="{{form.password1.html_name}}"
-                  id="{{form.password1.id_for_label}}"
-                  class="form-control"
-                  data-toggle="password"
-                  placeholder="Masukkan Password"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                </div>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-eye"></i></span>
               </div>
             </div>
-            <div class="form-group">
-              <div class="input-group">
-                <input
-                  type="password"
-                  name="{{form.password2.html_name}}"
-                  id="{{form.password2.id_for_label}}"
-                  class="form-control"
-                  data-toggle="password"
-                  placeholder="Konfirmasi Password"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                type="password"
+                name="{{form.password2.html_name}}"
+                id="{{form.password2.id_for_label}}"
+                class="form-control"
+                data-toggle="password"
+                placeholder="Konfirmasi Password"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-eye"></i></span>
               </div>
             </div>
-            <button type="submit" class="btn btn-custom-dark">Register</button>
-          </form>
-          <p class="text-center mt-2 mb-0">Jika sudah punya akun, silakan <a href="{% url 'login'%}">Login</a></p>
-        </div>
+          </div>
+          <button type="submit" class="btn btn-custom-dark">Register</button>
+        </form>
+        <p class="text-center mt-2 mb-0">Jika sudah punya akun, silakan <a href="#">Login</a></p>
       </div>
+    </div>
 
-      {% endblock %}
-          
-    <script>
-
-        for (var field in form_fields){
-            form_fields[field].className += 'form-control'
-        }
-    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../../static/registration/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="../../static/registration/js/popper.min.js"></script>
-    <script src="../../static/registration/js/bootstrap.min.js"></script>
+    <script src=" {% static 'js/jquery-3.5.1.slim.min.js' %} "></script>
+    <script src=" {% static 'js/popper.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
 
-    <script src="../../static/registration/js/bootstrap-show-password.min.js"></script>
-
-
+    <script src=" {% static 'js/bootstrap-show-password.min.js' %} "></script>
   </body>
 </html>
