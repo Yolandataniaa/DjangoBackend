@@ -102,12 +102,14 @@ def leaderboard(request):
     return render(request, template, context)
 
 def profile(request):
+    all_entries = User.objects.all().filter(is_superuser=False)
+
     template = "polls/profile.html"
     context = {
-        'all_entries' : User.objects.all(),
+        'all_entries': all_entries,
     }
     
-    return render(request, template)
+    return render(request, template, context)
 
 def nilai(request):
     if not request.user.is_authenticated:
