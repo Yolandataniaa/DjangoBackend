@@ -55,22 +55,20 @@ def upload(request):
                 usr = None
             
             if usr is not None:
-                usr.first_name = column[1]
-                usr.last_name = column[2]
-                usr.student.xp = column[3]
-                usr.student.hp = column[4]
-                usr.student.level = column[5]
-                usr.student.nilai1 = column[6]
-                usr.student.nilai2 = column[7]
-                usr.student.nilai3 = column[8]
-                usr.student.nilai4 = column[9]
-                usr.student.kepemimpinan = column[10]
-                usr.student.nasionalisme = column[11]
-                usr.student.kebermanfaatan = column[12]
-                usr.student.keilmuan = column[13]
-                usr.student.adaptif = column[14]
-                usr.student.solidaritas = column[15]
-                usr.student.kolaboratif = column[16]
+                usr.student.xp = column[1]
+                usr.student.hp = column[2]
+                usr.student.level = column[3]
+                usr.student.nilai1 = column[4]
+                usr.student.nilai2 = column[5]
+                usr.student.nilai3 = column[6]
+                usr.student.nilai4 = column[7]
+                usr.student.kepemimpinan = column[8]
+                usr.student.nasionalisme = column[9]
+                usr.student.kebermanfaatan = column[10]
+                usr.student.keilmuan = column[11]
+                usr.student.adaptif = column[12]
+                usr.student.solidaritas = column[13]
+                usr.student.kolaboratif = column[14]
 
                 usr.is_active = True
                 usr.save()
@@ -95,7 +93,7 @@ def leaderboard(request):
     current_user = request.user
     user1 = User.objects.get(username='13319002')
     user2 = User.objects.get(username='13319003')
-    user3 = User.objects.get(username='13319004')
+    user3 = User.objects.get(username='13319020')
     context = {
         'user': current_user,
         'user1' : user1,
