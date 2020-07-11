@@ -35,7 +35,7 @@ h1 {
 
   .left img {
     position: fixed;
-    bottom: 0;
+    top: -80px;
     left: -400px;
     opacity: 0.6;
   }

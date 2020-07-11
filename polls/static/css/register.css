@@ -35,9 +35,9 @@ h1 {
 
   .right img {
     position: fixed;
-    bottom: 0;
+    top: -80px;
     right: -400px;
-    opacity: 0.1;
+    opacity: 0.6;
   }
 }
 
