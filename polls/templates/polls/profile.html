@@ -54,7 +54,7 @@
         <div class="row justify-content-center">
           <div class="pagination">
             <span class="step-links">
-                <a href="?page=1">1</a>
+                <a href="?page=1" class="current">1</a>
                 <a href="?page=2">2</a>
                 <a href="?page=3">3</a>
                 <a href="?page=4">4</a>
@@ -74,8 +74,9 @@ $('.nav-link').removeClass('active');
 $('#profile').addClass('active');
 
 $('.pagination a').each(function() {
+  $(this).removeClass('current');
   if($(this).html() === '{{ page_obj.number }}') {
-    $(this).addClass('current')
+    $(this).addClass('current');
   }
 });
 </script>

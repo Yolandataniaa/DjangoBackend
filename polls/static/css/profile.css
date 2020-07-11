@@ -20,28 +20,37 @@ h5.bar {
   width: 30px !important;
 }
 
+.level-img {
+  height: 60px;
+}
+
 .card .progress {
   width: 100%;
 }
 
+.progress {
+  height: 20px;
+}
+
+.progress-bar {
+  text-align: right;
+  padding-right: 0.25rem;
+}
+
 .pagination a {
-  font-size: 1.5rem !important;
   color: black;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-  font-size: 1.2rem;
 }
 
-.pagination a:hover,
-.current {
-  background-color: var(--custom);
-  color: #fff !important;
+.pagination a.current {
+  background-color: #322338;
+  color: white;
   border-radius: 5px;
-  text-decoration: none;
 }
 
-/* .pagination a:hover:not(.active) {
+.pagination a:hover:not(.current) {
   background-color: #ddd;
   border-radius: 5px;
-} */
+}
