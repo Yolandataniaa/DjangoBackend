@@ -1,7 +1,32 @@
-<meta http-equiv="refresh" content="1; url={% url 'leaderboard'%}">
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="refresh" content="1; url={% url 'leaderboard'%}">
 
-<p>Logged out!</p>    
-You should be redirected soon. Otherwise, 
-<a href="{% url 'leaderboard'%}">
-	click here.
-</a>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/template.css' %}" />
+
+	<style>
+		h1 {
+			font-family: "piratesbay", cursive;
+			font-size: 4rem;
+		}
+		p {
+			font-size: 1.5rem;
+		}
+	</style>
+
+	<title>Logged out!</title>
+</head>
+<body class="d-flex justify-content-center align-items-center">
+	<div class="text-center">
+		<h1>Logged out!</h1>
+		<p>You should be redirected soon. Otherwise, <a href="{% url 'leaderboard'%}">click here.</a></p>
+	</div>
+</body>
+</html>

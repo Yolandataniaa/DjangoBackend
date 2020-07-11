@@ -78,6 +78,24 @@ h4 {
   }
 }
 
-.logout{
-  width: 20px;
+table {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+table:hover {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 1);
+  transition: box-shadow 0.15s;
+}
+
+tbody {
+  background-color: var(--custom);
+  color: #fff;
+}
+
+table th {
+  font-family: "piratesbayregular", cursive;
+}
+
+table td {
+  text-align: right;
 }

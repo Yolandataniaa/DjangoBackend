@@ -106,7 +106,7 @@ def leaderboard(request):
 
 def profile(request):
     all_entries = User.objects.order_by('username').filter(is_superuser=False)
-    paginator = Paginator(all_entries, 16)
+    paginator = Paginator(all_entries, 2)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
