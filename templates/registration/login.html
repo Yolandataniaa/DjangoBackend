@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 {% load static %}
-
 <html lang="en">
   <head>
     
@@ -13,20 +11,14 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} " />
-
-    <link rel="stylesheet" href=" {% static 'css/custom.css' %} " />
-    <link rel="stylesheet" href=" {% static 'css/login.css' %} " />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
 
     <title>Login</title>
-    
   </head>
-  <body class="d-flex">
+  <body>
     <header>
       <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-custom">
         <div class="container">
@@ -58,46 +50,45 @@
         </div>
       </nav>
     </header>
-            <!-- UNTUK SESI LOGIN -->
-
-    <div class="left">
-      <img src=" {% static 'img/logo_sekolah_skullers.png' %} " alt="sekolah-skullers">
-    </div>
-    <div class="right">
-      <div class="m-3">
-        <h1 class="text-center">Login</h1>
-        <form action="" method="post">
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="nim">NIM</label>
-            <input
-              type="text"
-              class="form-control"
-              name="{{form.username.html_name}}"
-              id="{{form.username.id_for_label}}"
-              placeholder="Masukkan NIM"
-            />
-            <small class="form-text text-muted">Ex. 13319001</small>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <div class="input-group">
+    <div class="content">
+      <div class="left">
+        <img src=" {% static 'img/logo_sekolah_skullers.png' %} " alt="sekolah-skullers">
+      </div>
+      <div class="right">
+        <div class="m-3">
+          <h1 class="text-center">Login</h1>
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="nim">NIM</label>
               <input
-                type="password"
-                name="{{form.password.html_name}}"
-                id="{{form.password.id_for_label}}"
+                type="text"
                 class="form-control"
-                data-toggle="password"
-                placeholder="Masukkan Password"
+                name="{{form.username.html_name}}"
+                id="{{form.username.id_for_label}}"
+                placeholder="Masukkan NIM"
               />
-              <div class="input-group-append">
-                <span class="input-group-text"><i class="fa fa-eye"></i></span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  name="{{form.password.html_name}}"
+                  id="{{form.password.id_for_label}}"
+                  class="form-control"
+                  data-toggle="password"
+                  placeholder="Masukkan Password"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fa fa-eye"></i></span>
+                </div>
               </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-custom-dark">Login</button>
-        </form>
-        <p class="text-center mt-2 mb-0">Tidak punya akun? <a href="{% url 'register'%}">Register</a></p>
+            <button type="submit" class="btn btn-custom-dark">Login</button>
+          </form>
+          <p class="text-center mt-2 mb-0">Tidak punya akun? <a href="{% url 'register'%}">Register</a></p>
+        </div>
       </div>
     </div>
 
