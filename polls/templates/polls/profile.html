@@ -85,12 +85,21 @@
                       src=" {% static 'icon/person-check-fill.svg' %} "
                       alt="user"
                     />
+                    {% if user.is_authenticated %}
+                    <span>{{user.username}}</span>
+                    {% else %}
                     <span>Login/Register</span>
+                    {% endif %}
                   </div>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="{% url 'login'%}">Login</a>
-                  <a class="dropdown-item" href="{% url 'register'%}">Register</a>
+                  {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="../nilai">Nilai</a>
+                    <a class="dropdown-item" href="../accounts/logout">Logout</a>
+                  {% else %}
+                    <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                    <a class="dropdown-item" href="{% url 'register'%}">Register</a>
+                  {% endif %}
                 </div>
               </div>
             </div>

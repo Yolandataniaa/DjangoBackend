@@ -92,10 +92,12 @@ def upload(request):
 
 def leaderboard(request):
     template = "polls/leaderboard.html"
+    current_user = request.user
     user1 = User.objects.get(username='13319002')
     user2 = User.objects.get(username='13319003')
     user3 = User.objects.get(username='13319004')
     context = {
+        'user': current_user,
         'user1' : user1,
         'user2' : user2,
         'user3' : user3,
