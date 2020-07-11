@@ -45,12 +45,17 @@
                   <a
                     href="../leaderboard"
                     id="leaderboard"
-                    class="nav-item nav-link mr-md-3 active"
+                    class="nav-item nav-link mr-md-3"
                     >Leaderboard</a
                   >
                   <a href="../profile" id="profile" class="nav-item nav-link mr-md-3"
                     >Profile</a
                   >
+                  {% if user.is_authenticated %}
+                  <a href="../nilai" id="nilai" class="nav-item nav-link mr-md-3 active"
+                    >Nilai</a
+                  >
+                  {% endif %}
                 </div>
             <!-- UNTUK SESI ANON -->
             <!-- <div class="navbar-nav ml-auto">
@@ -71,21 +76,22 @@
               </a>
             </div> -->
             <!-- UNTUK SESI LOGIN -->
-
-           <div class="navbar-nav text-center p-0 ml-auto">
-              <img
-              class="btn-icon mr-2 logout"
-              src=" {% static 'icon/logout.svg' %} "
-              alt="user"
-              />
-              <a
-                href="../accounts/logout"
-                id="logout"
-                class="nav-item nav-link mr-md-3 active"
-                >Logout</a
-              >
-            </div>
-              </div>
+            <div class="navbar-nav ml-auto">
+              <span class="btn btn-custom-light my-md-0 my-1 ml-md-3">
+                <div class="container justify-content-center px-0">
+                  <img
+                    class="btn-icon mr-2"
+                    src="{% static 'icon/person-check-fill.svg' %}"
+                    alt="user"
+                  />
+                  <span>{{ user.username }}</span>
+                </div>
+              </span>
+              <a href="../accounts/logout" class="btn btn-custom-light my-md-0 my-1 ml-md-3">
+                <div class="container justify-content-center px-0">
+                  <span>Logout</span>
+                </div>
+              </a>
             </div>
           </div>
         </div>

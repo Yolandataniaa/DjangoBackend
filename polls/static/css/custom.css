@@ -29,6 +29,14 @@ body {
   background-color: var(--custom);
 }
 
+.bg-health {
+  background-color: #e82626;
+}
+
+.bg-exp {
+  background-color: #36b90e;
+}
+
 /* BUTTON */
 .btn {
   font-family: "piratesbayregular", cursive;

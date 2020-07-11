@@ -11,13 +11,13 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} " />
-    <link rel="stylesheet" href=" {% static 'css/custom.css' %} " />
     <link rel="stylesheet" href=" {% static 'css/font-awesome.min.css' %} " />
+    <link rel="stylesheet" href=" {% static 'css/custom.css' %} " />
     <link rel="stylesheet" href=" {% static 'css/template.css' %} " />
-    <link rel="stylesheet" href=" {% static 'css/profile.css' %} ">
+    <link rel="stylesheet" href=" {% static 'css/leaderboard.css' %} " />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href=" {% static 'favicon.ico' %} " type="image/x-icon" />
 
     <title>Sekolah Skullers</title>
   </head>
@@ -41,12 +41,12 @@
           <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav text-center p-0">
               <a
-                href="../leaderboard"
+                href=""
                 id="leaderboard"
-                class="nav-item nav-link mr-md-3"
+                class="nav-item nav-link mr-md-3 active"
                 >Leaderboard</a
               >
-              <a href="" id="profile" class="nav-item nav-link mr-md-3 active"
+              <a href="../profile" id="profile" class="nav-item nav-link mr-md-3"
                 >Profile</a
               >
               {% if user.is_authenticated %}
@@ -104,62 +104,104 @@
     <!-- Content start -->
     <main class="flex-shrink-0" role="main">
       <div class="container content">
-        <h1>Profile</h1>
-        <div class="row justify-content-center">
-          <!-- Ini satu profil buat looping start -->
-          {%  for user in page_obj%}
-          <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
+        <h1 class="font-weight-bold">Leaderboard</h1>
+        <div class="row">
+          <div class="col-5 align-items-center">
+            <span class="mr-4">1</span>
+            <h5>{{user1.last_name}}</h5>
+          </div>
+          <div class="col flex-column flex-sm-row pl-sm-0">
+            <div class="d-flex flex-column align-items-center mr-sm-3">
               <img
-                class="card-img-top rounded-circle img-thumbnail w-50 mx-auto mt-3"
-                src=" {% static "img/foto/"|add:user.username|add:".jpg" %} "
-                alt="pic"
+                class="level-img img-thumbnail d-none d-sm-block mb-2"
+                width="60"
+                height="60"
+                src=" {% static "icon/level/"|add:user1.student.level|add:".png" %}"
+                alt="level"
               />
-              <div class="card-body pt-2">
-                <h5 class="card-title text-center mb-0">{{user.last_name}}</h5>
-                <div class="container d-flex flex-column pt-3">
-                  <div class="d-flex flex-column align-items-center">
-                    <img
-                      class="level-img img-thumbnail d-none d-sm-block mb-2"
-                      width="60"
-                      height="60"
-                      src=" {% static "icon/level/"|add:user.student.level|add:".png" %} "
-                      alt="level"
-                    />
-                    <span class="badge badge-pill badge-success badge-sm">{{user.student.level}}</span>
-                  </div>
-                  <div class="d-flex align-items-center mt-2">
-                    <h5 class="bar mr-2 mb-0">HP</h5>
-                    <div class="progress w-100">
-                      <div class="progress-bar bg-health" style="width: {{user.student.hp}}%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center mt-2">
-                    <h5 class="bar mr-2 mb-0">XP</h5>
-                    <div class="progress w-100">
-                      <div class="progress-bar bg-exp" style="width: {{user.student.xp}}%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
+              <span class="badge badge-pill badge-success badge-sm">{{user1.student.level}}</span>
+            </div>
+            <div
+              class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
+            >
+              <h5 class="d-none d-sm-block mr-2 mb-1">XP</h5>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-warning"
+                  style="width: {{user1.student.xp}}%"
+                  role="progressbar"
+                  aria-valuenow="20"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
               </div>
             </div>
           </div>
-          {%endfor%}
-
-
-          <!-- Ini satu profil buat looping end -->
         </div>
-        <div class="row justify-content-center">
-          <div class="pagination">
-            <span class="step-links">
-                <a href="?page=1">&laquo; 1</a>
-                <a href="?page=2">2</a>
-                <a href="?page=3">3</a>
-                <a href="?page=4">4</a>
-                <a href="?page=5">5</a>
-                <a href="?page=6">6</a>
-                <a href="?page=7">7 &raquo;</a>
-            </span>
+        <div class="row">
+          <div class="col-5 align-items-center">
+            <span class="mr-4">2</span>
+            <h5>{{user2.last_name}}</h5>
+          </div>
+          <div class="col flex-column flex-sm-row pl-sm-0">
+            <div class="d-flex flex-column align-items-center mr-sm-3">
+              <img
+                class="level-img img-thumbnail d-none d-sm-block mb-2"
+                width="60"
+                height="60"
+                src=" {% static "icon/level/"|add:user2.student.level|add:".png" %} "
+                alt="level"
+              />
+              <span class="badge badge-pill badge-primary badge-sm">{{user2.student.level}}</span>
+            </div>
+            <div
+              class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
+            >
+              <h5 class="d-none d-sm-block mr-2 mb-1">XP</h5>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-warning"
+                  style="width: {{user2.student.xp}}%"
+                  role="progressbar"
+                  aria-valuenow="70"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5 align-items-center">
+            <span class="mr-4">3</span>
+            <h5>{{user3.last_name}}</h5>
+          </div>
+          <div class="col flex-column flex-sm-row pl-sm-0">
+            <div class="d-flex flex-column align-items-center mr-sm-3">
+              <img
+                class="level-img img-thumbnail d-none d-sm-block mb-2"
+                width="60"
+                height="60"
+                src=" {% static "icon/level/"|add:user3.student.level|add:".png" %} "
+                alt="level"
+              />
+              <span class="badge badge-pill badge-danger badge-sm">{{user3.student.level}}</span>
+            </div>
+            <div
+              class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
+            >
+              <h5 class="d-none d-sm-block mr-2 mb-1">XP</h5>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-warning"
+                  style="width: {{user3.student.xp}}%"
+                  role="progressbar"
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -179,7 +221,7 @@
           <div class="container link justify-content-sm-center">
             <img
               class="mr-2"
-              src=" {% static 'icon/instagram.png' %}"
+              src=" {% static 'icon/instagram.png' %} "
               alt="instagram"
               height="25"
             />
