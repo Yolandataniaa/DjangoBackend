@@ -114,7 +114,8 @@
 
 {% block js %}
 <script>
-$('.nav-link').removeClass('active');
-$('#leaderboard').addClass('active');
+$(function() {
+  $('#leaderboard').addClass('active');
+});
 </script>
 {% endblock js %}
