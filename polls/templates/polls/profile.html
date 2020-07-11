@@ -110,7 +110,7 @@
         <h1>Profile</h1>
         <div class="row justify-content-center">
           <!-- Ini satu profil buat looping start -->
-          {%  for user in all_entries%}
+          {%  for user in page_obj%}
           <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
               <img
@@ -119,7 +119,7 @@
                 alt="pic"
               />
               <div class="card-body pt-2">
-                <h5 class="card-title text-center mb-0">{{user.first_name}}</h5>
+                <h5 class="card-title text-center mb-0">{{user.last_name}}</h5>
                 <div class="container d-flex flex-column pt-3">
                   <div class="d-flex flex-column align-items-center">
                     <img
@@ -148,17 +148,21 @@
             </div>
           </div>
           {%endfor%}
+
+
           <!-- Ini satu profil buat looping end -->
         </div>
         <div class="row justify-content-center">
           <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">&raquo;</a>
+            <span class="step-links">
+                <a href="?page=1">&laquo; 1</a>
+                <a href="?page=2">2</a>
+                <a href="?page=3">3</a>
+                <a href="?page=4">4</a>
+                <a href="?page=5">5</a>
+                <a href="?page=6">6</a>
+                <a href="?page=7">7 &raquo;</a>
+            </span>
           </div>
         </div>
       </div>

@@ -106,10 +106,14 @@ def leaderboard(request):
 
 def profile(request):
     all_entries = User.objects.order_by('username').filter(is_superuser=False)
+    paginator = Paginator(all_entries, 16)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     template = "polls/profile.html"
     context = {
-        'all_entries': all_entries,
+        'page_obj': page_obj,
     }
     
     return render(request, template, context)
