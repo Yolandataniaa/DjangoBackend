@@ -9,6 +9,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Student
 from .forms import CreateUserForm
 from django.conf.urls.static import static
+from django.db.models import Count
+from django.core.paginator import Paginator
 
 def registerPage(request):
     form = CreateUserForm()
@@ -53,23 +55,22 @@ def upload(request):
                 usr = None
             
             if usr is not None:
-                usr.student.nomor = column[1]
-                usr.first_name = column[2]
-                usr.last_name = column[3]
-                usr.student.xp = column[4]
-                usr.student.hp = column[5]
-                usr.student.level = column[6]
-                usr.student.nilai1 = column[7]
-                usr.student.nilai2 = column[8]
-                usr.student.nilai3 = column[9]
-                usr.student.nilai4 = column[10]
-                usr.student.kepemimpinan = column[11]
-                usr.student.nasionalisme = column[12]
-                usr.student.kebermanfaatan = column[13]
-                usr.student.keilmuan = column[14]
-                usr.student.adaptif = column[15]
-                usr.student.solidaritas = column[16]
-                usr.student.kolaboratif = column[17]
+                usr.first_name = column[1]
+                usr.last_name = column[2]
+                usr.student.xp = column[3]
+                usr.student.hp = column[4]
+                usr.student.level = column[5]
+                usr.student.nilai1 = column[6]
+                usr.student.nilai2 = column[7]
+                usr.student.nilai3 = column[8]
+                usr.student.nilai4 = column[9]
+                usr.student.kepemimpinan = column[10]
+                usr.student.nasionalisme = column[11]
+                usr.student.kebermanfaatan = column[12]
+                usr.student.keilmuan = column[13]
+                usr.student.adaptif = column[14]
+                usr.student.solidaritas = column[15]
+                usr.student.kolaboratif = column[16]
 
                 usr.is_active = True
                 usr.save()
@@ -102,7 +103,7 @@ def leaderboard(request):
     return render(request, template, context)
 
 def profile(request):
-    all_entries = User.objects.all().filter(is_superuser=False)
+    all_entries = User.objects.order_by('username').filter(is_superuser=False)
 
     template = "polls/profile.html"
     context = {
@@ -118,14 +119,7 @@ def nilai(request):
     current_user = request.user
     template = "polls/nilai.html"
     context = {
-        'nilai': current_user.student.nilai1,
-        'kepemimpinan': current_user.student.kepemimpinan,
-        'nasionalisme': current_user.student.nasionalisme,
-        'kebermanfaatan': current_user.student.kebermanfaatan,
-        'keilmuan': current_user.student.keilmuan,
-        'adaptif': current_user.student.adaptif,
-        'solidaritas': current_user.student.solidaritas,
-        'kolaboratif': current_user.student.kolaboratif,
+        'user': current_user,
     }    
     return render(request, template, context)
 

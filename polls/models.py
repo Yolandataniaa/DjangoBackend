@@ -5,7 +5,6 @@ from django.conf import settings
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 
-    nomor = models.IntegerField(default=0)
     xp = models.IntegerField(default=0)
     hp = models.IntegerField(default=0)
     level = models.CharField(max_length=20, default="")

@@ -1,0 +1,83 @@
+h4 {
+  font-family: "piratesbayregular", cursive;
+  margin: 0;
+}
+
+.profile-content {
+  width: 18rem;
+}
+
+.profile-content .progress {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.progress-bar {
+  font-size: 1.2rem;
+}
+
+.bar-1 h4 {
+  color: rgb(46, 126, 14);
+}
+
+.bar-1 .progress-bar {
+  background-color: rgb(46, 126, 14);
+}
+
+.bar-2 h4 {
+  color: rgb(190, 46, 10);
+}
+
+.bar-2 .progress-bar {
+  background-color: rgb(190, 46, 10);
+}
+
+.bar-3 h4 {
+  color: rgb(107, 106, 106);
+}
+
+.bar-3 .progress-bar {
+  background-color: rgb(107, 106, 106);
+}
+
+.bar-4 h4 {
+  color: rgb(68, 146, 172);
+}
+
+.bar-4 .progress-bar {
+  background-color: rgb(68, 146, 172);
+}
+
+.bar-5 h4 {
+  color: rgb(199, 113, 1);
+}
+
+.bar-5 .progress-bar {
+  background-color: rgb(199, 113, 1);
+}
+
+.bar-6 h4 {
+  color: rgb(51, 51, 51);
+}
+
+.bar-6 .progress-bar {
+  background-color: rgb(51, 51, 51);
+}
+
+.bar-7 h4 {
+  color: rgb(64, 36, 167);
+}
+
+.bar-7 .progress-bar {
+  background-color: rgb(64, 36, 167);
+}
+
+@media (min-width: 576px) {
+  .profile-content {
+    width: 100%;
+  }
+}
+
+.logout{
+  width: 20px;
+}

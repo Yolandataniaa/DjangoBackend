@@ -41,7 +41,7 @@
           <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav text-center p-0">
               <a
-                href="#"
+                href=""
                 id="leaderboard"
                 class="nav-item nav-link mr-md-3 active"
                 >Leaderboard</a
@@ -85,12 +85,12 @@
                       src=" {% static 'icon/person-check-fill.svg' %} "
                       alt="user"
                     />
-                    <span>Ucup Surucup</span>
+                    <span>Login/Register</span>
                   </div>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Nilai</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                  <a class="dropdown-item" href="{% url 'register'%}">Register</a>
                 </div>
               </div>
             </div>
