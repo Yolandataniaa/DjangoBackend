@@ -127,19 +127,3 @@ def nilai(request):
     }    
     return render(request, template, context)
 
-def rapot(request):
-    if not request.user.is_authenticated:
-        return HttpResponseForbidden ("nope.")
-
-    current_user = request.user
-    template = "polls/rapot.html"
-    context = {
-        'kepemimpinan': current_user.student.kepemimpinan,
-        'nasionalisme': current_user.student.nasionalisme,
-        'kebermanfaatan': current_user.student.kebermanfaatan,
-        'keilmuan': current_user.student.keilmuan,
-        'adaptif': current_user.student.adaptif,
-        'solidaritas': current_user.student.solidaritas,
-        'kolaboratif': current_user.student.kolaboratif,
-    }    
-    return render(request, template, context)

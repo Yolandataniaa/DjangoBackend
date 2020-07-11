@@ -1,15 +1,16 @@
 .content {
   display: flex;
-  margin-top: 62px;
 }
 
 .nav-link{
   font-size: 19px;
+  Color: #322338;
 }
 
 .navbar-brand {
   font-family: "piratesbayregular", cursive;
   font-size: 1.5rem;
+
 }
 
 .right,
@@ -21,14 +22,14 @@
 
 .right {
   width: 0;
-  height: 0;
   background-color: #322338;
   color: #fff;
 }
 
 .left {
   width: 100%;
-  height: calc(100vh - 62px);
+  margin-top: 10px;
+  height: calc(100vh - 10px);
 }
 
 h1 {
@@ -44,7 +45,7 @@ h1 {
 
   .right {
     display: flex;
-    height: calc(100vh - 62px);
+    bottom: 0;
   }
 
   .right img {
@@ -86,4 +87,8 @@ label {
 .form-control:focus {
   border: 1px solid #322338;
   box-shadow: none !important;
+}
+
+button{
+  margin: 10px;
 }
