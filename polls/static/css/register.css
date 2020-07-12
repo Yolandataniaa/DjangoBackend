@@ -4,7 +4,7 @@
 
 .nav-link{
   font-size: 19px;
-  Color: #322338;
+  color: var(--custom);
 }
 
 .navbar-brand {
@@ -22,14 +22,15 @@
 
 .right {
   width: 0;
-  background-color: #322338;
+  background-color: var(--custom);
   color: #fff;
 }
 
 .left {
+  flex-direction: column;
+  justify-content: start;
   width: 100%;
-  margin-top: 10px;
-  height: calc(100vh - 10px);
+  height: 100vh;
 }
 
 h1 {
@@ -85,10 +86,6 @@ label {
 }
 
 .form-control:focus {
-  border: 1px solid #322338;
+  border: 1px solid var(--custom);
   box-shadow: none !important;
-}
-
-button{
-  margin: 10px;
 }

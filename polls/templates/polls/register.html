@@ -10,50 +10,50 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
     <link rel="stylesheet" href="{% static 'css/register.css' %}" />
 
     <title>Register</title>
   </head>
   <body>
-    <header>
-      <nav class="navbar fixed-top navbar-expand-md">
-        <div class="container">
-          <span class="navbar-brand mr-0 mr-md-5">Sekolah Skullers</span>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbar"
-            aria-controls="navbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav text-center p-0">
-              <a
-                href="../leaderboard"
-                id="leaderboard"
-                class="nav-item nav-link mr-md-3"
-                >Leaderboard</a
-              >
-              <a href="../profile" id="profile" class="nav-item nav-link mr-md-3"
-                >Profile</a
-              >
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
     <div class="content">
       <div class="right order-md-1">
         <img src=" {% static 'img/logo_sekolah_skullers.png' %} " alt="sekolah-skullers">
       </div>
       <div class="left order-0">
+        <header class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <div class="container">
+              <span class="navbar-brand mr-0 mr-lg-5">Sekolah Skullers</span>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar"
+                aria-controls="navbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbar">
+                <div class="navbar-nav text-center ml-auto p-0">
+                  <a
+                    href="../leaderboard"
+                    id="leaderboard"
+                    class="nav-item nav-link mr-md-3"
+                    >Leaderboard</a
+                  >
+                  <a href="../profile" id="profile" class="nav-item nav-link mr-md-3"
+                    >Profile</a
+                  >
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
         <div class="m-3">
           <h1 class="text-center">Register</h1>
           <form action="" method="post">
@@ -128,7 +128,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-custom-dark">Register</button>
+            <button type="submit" class="btn btn-custom-dark mt-2">Submit</button>
           </form>
           <p class="text-center mt-2 mb-0">Jika sudah punya akun, silakan <a href="{% url 'login'%}">Login</a></p>
         </div>

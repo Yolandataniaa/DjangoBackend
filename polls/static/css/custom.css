@@ -1,16 +1,16 @@
 /* FONT */
 @font-face {
   font-family: "piratesbayregular";
-  src: url("../font/piratesbay-webfont.woff2") format("woff2"),
-    url("../font/piratesbay-webfont.woff") format("woff");
+  src: url("../fonts/piratesbay-webfont.woff2") format("woff2"),
+    url("../fonts/piratesbay-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "forumregular";
-  src: url("../font/forum-regular-webfont.woff2") format("woff2"),
-    url("../font/forum-regular-webfont.woff") format("woff");
+  src: url("../fonts/forum-regular-webfont.woff2") format("woff2"),
+    url("../fonts/forum-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

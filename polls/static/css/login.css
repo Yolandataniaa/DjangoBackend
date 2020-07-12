@@ -1,6 +1,5 @@
 .content {
   display: flex;
-  margin-top: 62px;
 }
 
 .nav-link{
@@ -21,14 +20,15 @@
 
 .left {
   width: 0;
-  height: 0;
-  background-color: #322338;
+  background-color: var(--custom);
   color: #fff;
 }
 
 .right {
+  flex-direction: column;
+  justify-content: start;
   width: 100%;
-  height: calc(100vh - 62px);
+  height: 100vh;
 }
 
 h1 {
@@ -44,7 +44,7 @@ h1 {
 
   .left {
     display: flex;
-    height: calc(100vh - 62px);
+    bottom: 0;
   }
 
   .left img {
@@ -84,10 +84,6 @@ label {
 }
 
 .form-control:focus {
-  border: 1px solid #322338;
+  border: 1px solid var(--custom);
   box-shadow: none !important;
-}
-
-button{
-  margin: 10px;
 }
