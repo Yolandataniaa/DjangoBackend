@@ -14,10 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -26,9 +23,9 @@ STATICFILES_DIRS = [
 SECRET_KEY = 'nq2xa=*yv*ii=1+l639e8r++tf67p1*m&lwi=r(zk10_w7zn)z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,8 +76,12 @@ WSGI_APPLICATION = 'projectdjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sekolahskullers',
+        'HOST': '/opt/bitnami/mysql/tmp/mysql.sock',
+        'PORT': '3306',
+        'USER': 'sekolahskullers',
+        'PASSWORD': 'bermanfaat'
     }
 }
 
