@@ -21,7 +21,7 @@
             src=" {% static "icon/level/"|add:user1.student.level|add:".png" %}"
             alt="level"
           />
-          <span class="badge badge-pill badge-success badge-sm">{{user1.student.level}}</span>
+          <span class="badge badge-pill">{{user1.student.level}}</span>
         </div>
         <div
           class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
@@ -52,7 +52,7 @@
             src=" {% static "icon/level/"|add:user2.student.level|add:".png" %} "
             alt="level"
           />
-          <span class="badge badge-pill badge-primary badge-sm">{{user2.student.level}}</span>
+          <span class="badge badge-pill">{{user2.student.level}}</span>
         </div>
         <div
           class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
@@ -83,7 +83,7 @@
             src=" {% static "icon/level/"|add:user3.student.level|add:".png" %} "
             alt="level"
           />
-          <span class="badge badge-pill badge-danger badge-sm">{{user3.student.level}}</span>
+          <span class="badge badge-pill">{{user3.student.level}}</span>
         </div>
         <div
           class="d-flex flex-column align-items-center justify-content-center w-100 mt-2 mt-sm-0"
@@ -108,8 +108,6 @@
 
 {% block js %}
 <script>
-$(function() {
-  $('#leaderboard').addClass('active');
-});
+$('#leaderboard').addClass('active');
 </script>
 {% endblock js %}

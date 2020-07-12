@@ -67,7 +67,7 @@
                     src="{% static 'icon/person-check-fill.svg' %}"
                     alt="user"
                   />
-                  <span>{{ user.username }}</span>
+                  <span>{{ user.first_name }}</span>
                 </div>
               </span>
               <a href="../accounts/logout" class="btn btn-custom-light my-md-0 my-1 ml-md-3">
@@ -153,6 +153,7 @@
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/bootstrap-show-password.min.js' %}"></script>
+    <script src="{% static 'js/badge.js' %}"></script>
 
     {% block js %}
     {% endblock js %}
