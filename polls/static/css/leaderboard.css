@@ -35,6 +35,10 @@ h5 {
   margin: 0;
 }
 
+.level-img {
+  height: 60px;
+}
+
 .badge {
   /* font-family: "piratesbayregular", cursive; */
   font-family: "forumregular", cursive;

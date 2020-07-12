@@ -11,6 +11,11 @@
   transition: box-shadow 0.15s;
 }
 
+.card-img-top {
+  width: 150px !important;
+  height: 150px !important;
+}
+
 .card-body h5 {
   font-family: "piratesbayregular", cursive;
 }
