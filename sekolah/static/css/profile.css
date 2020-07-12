@@ -4,6 +4,8 @@
   background: var(--custom);
   color: #fff;
   margin-bottom: 2rem;
+  width: 18rem !important;
+  height: 26rem;
 }
 
 .card:hover {

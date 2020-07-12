@@ -13,20 +13,18 @@
       <!-- Ini satu profil buat looping start -->
       {% for user in page_obj %}
       <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
           <img
             class="card-img-top rounded-circle img-thumbnail mx-auto mt-3"
             src=" {% static "img/foto/"|add:user.username|add:".jpg" %} "
             alt="pic"
           />
-          <div class="card-body pt-2">
+          <div class="card-body d-flex flex-column justify-content-end align-items-center pt-2">
             <h5 class="card-title text-center mb-0">{{user.last_name}}</h5>
             <div class="container d-flex flex-column pt-3">
-              <div class="d-flex flex-column align-items-center">
+              <div class="d-flex flex-column align-items-center mb-2">
                 <img
-                  class="level-img img-thumbnail d-none d-sm-block mb-2"
-                  width="60"
-                  height="60"
+                  class="level-img d-block mb-2"
                   src=" {% static "icon/level/"|add:user.student.level|add:".png" %} "
                   alt="level"
                 />

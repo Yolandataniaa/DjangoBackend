@@ -39,7 +39,7 @@ def uploadUser(request):
     csv_file = request.FILES.get('file')
     unsaved = 0
     unsaved_str = ""
-    template = "polls/uploadUser.html"
+    template = "sekolah/uploadUser.html"
 
     if csv_file is not None:
         if not csv_file.name.endswith('.csv'):
@@ -50,15 +50,19 @@ def uploadUser(request):
         next(io_string)
     
         for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            try:
+                usr = User.objects.get(username=column[0])
+            except ObjectDoesNotExist:
                 usr = User(username=column[0])
-                usr.first_name=column[1]
-                usr.last_name=column[2]
-                usr.is_active = True
-                usr.save()
+            
+            usr.first_name=column[1]
+            usr.last_name=column[2]
+            usr.is_active = True
+            usr.save()
 
-                student = Student()
-                student.user = usr
-                student.save()
+            student = Student()
+            student.user = usr
+            student.save()
 
     if unsaved > 0 :
         unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
