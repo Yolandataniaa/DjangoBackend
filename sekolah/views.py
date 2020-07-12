@@ -1,7 +1,7 @@
 import csv, io
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -11,6 +11,7 @@ from .forms import CreateUserForm
 from django.conf.urls.static import static
 from django.db.models import Count
 from django.core.paginator import Paginator
+from django.urls import reverse
 
 def registerPage(request):
     form = CreateUserForm()
@@ -29,7 +30,7 @@ def registerPage(request):
 
 
     context = {'form' : form}
-    return render(request, 'polls/register.html', context)
+    return render(request, 'sekolah/register.html', context)
 
 def uploadUser(request):
     if not request.user.is_staff:
@@ -76,7 +77,7 @@ def upload(request):
     csv_file = request.FILES.get('file')
     unsaved = 0
     unsaved_str = ""
-    template = "polls/upload.html"
+    template = "sekolah/upload.html"
 
     if csv_file is not None:
         if not csv_file.name.endswith('.csv'):
@@ -127,7 +128,7 @@ def upload(request):
 
 
 def leaderboard(request):
-    template = "polls/leaderboard.html"
+    template = "sekolah/leaderboard.html"
     current_user = request.user
     user1 = User.objects.get(username='13319002')
     user2 = User.objects.get(username='13319003')
@@ -147,7 +148,7 @@ def profile(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    template = "polls/profile.html"
+    template = "sekolah/profile.html"
     context = {
         'page_obj': page_obj,
     }
@@ -159,9 +160,12 @@ def nilai(request):
         return HttpResponseForbidden ("nope.")
 
     current_user = request.user
-    template = "polls/nilai.html"
+    template = "sekolah/nilai.html"
     context = {
         'user': current_user,
     }    
     return render(request, template, context)
+
+def landing(request):
+    return HttpResponseRedirect(reverse('leaderboard'))
 
