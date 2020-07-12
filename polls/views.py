@@ -31,6 +31,44 @@ def registerPage(request):
     context = {'form' : form}
     return render(request, 'polls/register.html', context)
 
+def uploadUser(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden ("Only for staffs.")
+
+    csv_file = request.FILES.get('file')
+    unsaved = 0
+    unsaved_str = ""
+    template = "polls/uploadUser.html"
+
+    if csv_file is not None:
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, "This is not a csv file")
+
+        data_Set = csv_file.read().decode('UTF-8')
+        io_string = io.StringIO(data_Set)
+        next(io_string)
+    
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+                usr = User(username=column[0])
+                usr.first_name=column[1]
+                usr.last_name=column[2]
+                usr.is_active = True
+                usr.save()
+
+                student = Student()
+                student.user = usr
+                student.save()
+
+    if unsaved > 0 :
+        unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
+
+    context = {
+        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.',
+        'unsaved' : unsaved_str
+    }
+
+    return render(request, template, context)
+
 def upload(request):
     if not request.user.is_staff:
         return HttpResponseForbidden ("Only for staffs.")
