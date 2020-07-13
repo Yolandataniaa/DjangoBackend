@@ -68,7 +68,7 @@ def uploadUser(request):
         unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
 
     context = {
-        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.',
+        'order' : 'Order of CSV should be nim, first_name, last_name',
         'unsaved' : unsaved_str
     }
 
@@ -100,7 +100,6 @@ def upload(request):
             if usr is not None:
                 usr.student.xp = column[1]
                 usr.student.hp = column[2]
-                usr.student.level = column[3]
                 usr.student.nilai1 = column[4]
                 usr.student.nilai2 = column[5]
                 usr.student.nilai3 = column[6]
@@ -134,14 +133,9 @@ def upload(request):
 def leaderboard(request):
     template = "sekolah/leaderboard.html"
     current_user = request.user
-    user1 = User.objects.get(username='13319002')
-    user2 = User.objects.get(username='13319003')
-    user3 = User.objects.get(username='13319020')
+    usr_list = User.objects.order_by('-student__xp').filter(is_superuser=False)[:10]
     context = {
-        'user': current_user,
-        'user1' : user1,
-        'user2' : user2,
-        'user3' : user3,
+        'usr_list': usr_list 
     }
     return render(request, template, context)
 
