@@ -44,6 +44,20 @@ class Student(models.Model):
         "First Mate",
     ]
 
+    def xp_current(self):
+        for i in range(len(self.rank)):
+            if self.level == self.rank[i]:
+                low = self.milestones[i]
+                return self.xp - low
+
+    def xp_bar(self):
+        for i in range(len(self.rank)):
+            if self.level == self.rank[i]:
+                low = self.milestones[i]
+                high = self.milestones[i+1]
+                diff = high - low
+                return (100.0 * (self.xp-low))/diff
+
     def save(self, *args, **kwargs):
         for i in range(len(self.milestones)):
             if self.milestones[i] <= self.xp and self.xp < self.milestones[i+1]:
