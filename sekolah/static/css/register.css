@@ -10,7 +10,6 @@
 .navbar-brand {
   font-family: "piratesbayregular", cursive;
   font-size: 1.5rem;
-
 }
 
 .right,
@@ -21,7 +20,7 @@
 }
 
 .right {
-  width: 0;
+  display: none;
   background-color: var(--custom);
   color: #fff;
 }

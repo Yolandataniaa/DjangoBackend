@@ -19,7 +19,7 @@
 }
 
 .left {
-  width: 0;
+  display: none;
   background-color: var(--custom);
   color: #fff;
 }
