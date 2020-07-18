@@ -16,20 +16,20 @@
         <div class="card" style="width: 18rem;">
           <img
             class="card-img-top rounded-circle img-thumbnail w-50 mx-auto mt-3"
-            src=" {% static "img/foto/"|add:user.username|add:".jpg" %} "
+            src="{% static "img/foto/"|add:user.username|add:".jpg" %}"
             alt="pic"
           />
           <div class="card-body d-flex flex-column justify-content-end align-items-center pt-2">
-            <h5 class="card-title text-center mb-0">{{user.last_name}}</h5>
+            <h5 class="card-title text-center mb-0">{{ user.last_name }}</h5>
             <div class="container d-flex flex-column pt-3">
               <div class="d-flex flex-column align-items-center mb-2">
                 <img
                   class="level-img d-block mb-2"
-                  src=" {% static "icon/level/"|add:user.student.level|add:".png" %}"
+                  src="{% static "icon/level/"|add:user.student.level|add:".png" %}"
                   alt="level"
                 />
                 <span class="badge badge-pill badge-success badge-sm"
-                  >{{user.student.level}}</span
+                  >{{ user.student.level }}</span
                 >
               </div>
               <div class="d-flex align-items-center mt-2">
@@ -37,13 +37,13 @@
                 <div class="progress">
                   <div
                     class="progress-bar bg-health"
-                    style="width: {{user.student.hp}}%;"
+                    style="width: {{ user.student.hp }}%;"
                     role="progressbar"
                     aria-valuenow="50"
                     aria-valuemin="0"
                     aria-valuemax="100"
                   >
-                  {{user.student.hp}}
+                  {{ user.student.hp }}
                   </div>
                 </div>
               </div>
@@ -52,13 +52,13 @@
                 <div class="progress">
                   <div
                     class="progress-bar bg-exp"
-                    style="width: {{user.student.xp}}%;"
+                    style="width: {{ user.student.xp }}%;"
                     role="progressbar"
                     aria-valuenow="70"
                     aria-valuemin="0"
                     aria-valuemax="100"
                   >
-                  {{user.student.xp}}
+                  {{ user.student.xp }}
                   </div>
                 </div>
               </div>
@@ -74,9 +74,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.kepemimpinan}}%;"
+                style="width: {{ user.student.kepemimpinan }}%;"
               >
-              {{user.student.kepemimpinan}}
+              {{ user.student.kepemimpinan }}
               </div>
             </div>
           </div>
@@ -86,9 +86,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.nasionalisme}}%;"
+                style="width: {{ user.student.nasionalisme }}%;"
               >
-                {{user.student.nasionalisme}}
+                {{ user.student.nasionalisme }}
               </div>
             </div>
           </div>
@@ -98,9 +98,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.kebermanfaatan}}%;"
+                style="width: {{ user.student.kebermanfaatan }}%;"
               >
-                {{user.student.kebermanfaatan}}
+                {{ user.student.kebermanfaatan }}
               </div>
             </div>
           </div>
@@ -110,9 +110,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.keilmuan}}%;"
+                style="width: {{ user.student.keilmuan }}%;"
               >
-                {{user.student.keilmuan}}
+                {{ user.student.keilmuan }}
               </div>
             </div>
           </div>
@@ -122,9 +122,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.adaptif}}%;"
+                style="width: {{ user.student.adaptif }}%;"
               >
-                {{user.student.adaptif}}
+                {{ user.student.adaptif }}
               </div>
             </div>
           </div>
@@ -134,9 +134,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.solidaritas}}%;"
+                style="width: {{ user.student.solidaritas }}%;"
               >
-                {{user.student.solidaritas}}
+                {{ user.student.solidaritas }}
               </div>
             </div>
           </div>
@@ -146,9 +146,9 @@
               <div
                 class="progress-bar progress-bar-striped"
                 role="progressbar"
-                style="width: {{user.student.kolaboratif}}%;"
+                style="width: {{ user.student.kolaboratif }}%;"
               >
-                {{user.student.kolaboratif}}
+                {{ user.student.kolaboratif }}
               </div>
             </div>
           </div>
@@ -159,15 +159,15 @@
           <tbody>
             <tr>
               <th>Twibbon</th>
-              <td>{{user.student.nilai1}}</td>
+              <td>{{ user.student.nilai1 }}</td>
             </tr>
             <tr>
               <th>Video Ekspektasi</th>
-              <td>{{user.student.nilai2}}</td>
+              <td>{{ user.student.nilai2 }}</td>
             </tr>
             <tr>
               <th>Review Podcast</th>
-              <td>{{user.student.nilai3}}</td>
+              <td>{{ user.student.nilai3 }}</td>
             </tr>
           </tbody>
         </table>            

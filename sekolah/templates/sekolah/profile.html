@@ -10,7 +10,7 @@
   <div class="container content">
     <h1>Profile</h1>
     <div class="row justify-content-center">
-      <!-- Ini satu profil buat looping start -->
+      <!-- #loop -->
       {% for user in page_obj %}
       <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
         <div class="card">
@@ -20,7 +20,7 @@
             alt="pic"
           />
           <div class="card-body d-flex flex-column justify-content-end align-items-center pt-2">
-            <h5 class="card-title text-center mb-0">{{user.last_name}}</h5>
+            <h5 class="card-title text-center mb-0">{{ user.last_name }}</h5>
             <div class="container d-flex flex-column pt-3">
               <div class="d-flex flex-column align-items-center mb-2">
                 <img
@@ -28,26 +28,26 @@
                   src=" {% static "icon/level/"|add:user.student.level|add:".png" %} "
                   alt="level"
                 />
-                <span class="badge badge-pill">{{user.student.level}}</span>
+                <span class="badge badge-pill">{{ user.student.level }}</span>
               </div>
               <div class="d-flex align-items-center mt-2">
                 <h5 class="bar mr-2 mb-0">HP</h5>
                 <div class="progress w-100">
-                  <div class="progress-bar bg-health" style="width: {{user.student.hp}}%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar bg-health" style="width: {{ user.student.hp }}%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
               <div class="d-flex align-items-center mt-2">
                 <h5 class="bar mr-2 mb-0">XP</h5>
                 <div class="progress w-100">
-                  <div class="progress-bar bg-exp" style="width: {{user.student.xp_bar}}%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar bg-exp" style="width: {{ user.student.xp_bar }}%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {%endfor%}
-          <!-- Ini satu profil buat looping end -->
+      {% endfor %}
+      <!-- endloop -->
         </div>
         <div class="row justify-content-center">
           <div class="pagination">
@@ -78,5 +78,3 @@ $('.pagination a').each(function() {
 });
 </script>
 {% endblock js %}
-
-
