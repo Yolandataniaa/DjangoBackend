@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Student
+from .models import Angkatan
 from .forms import CreateUserForm
 from django.conf.urls.static import static
 from django.db.models import Count
@@ -99,7 +100,8 @@ def upload(request):
             
             if usr is not None:
                 usr.student.xp = column[1]
-                usr.student.hp = column[2]
+                usr.student.xpminggu = column[2]
+                usr.student.hp = column[3]
                 usr.student.nilai1 = column[4]
                 usr.student.nilai2 = column[5]
                 usr.student.nilai3 = column[6]
@@ -139,6 +141,20 @@ def leaderboard(request):
     }
     return render(request, template, context)
 
+def mingguan(request):
+    template = "sekolah/mingguan.html"
+    current_user = request.user
+    usr_list = User.objects.order_by('-student__xpminggu').filter(is_superuser=False)[:10]
+
+    for i in range(len(usr_list)):
+        xpminggu_bar = usr_list[i].student.xpminggu/usr_list[0].student.xpminggu*100
+        
+    context = {
+            'usr_list': usr_list,
+            'xpminggu_bar': xpminggu_bar
+        }
+    return render(request, template, context)
+
 def profile(request):
     all_entries = User.objects.order_by('username').filter(is_superuser=False)
     paginator = Paginator(all_entries, 16)
@@ -147,8 +163,11 @@ def profile(request):
     page_obj = paginator.get_page(page_number)
 
     template = "sekolah/profile.html"
+    objek = Angkatan.objects.get(angkatan='Angkatan19')
     context = {
         'page_obj': page_obj,
+        'angkatan_xp': objek.xp,
+        'angkatan_level': objek.level,
     }
     
     return render(request, template, context)
