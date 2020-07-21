@@ -9,6 +9,7 @@ class Student(models.Model):
     xpminggu  = models.IntegerField(default=0)
     hp = models.IntegerField(default=100)
     level = models.CharField(max_length=20, default="Sailors")
+    hp_pot = models.IntegerField(default=0)
 
     nilai1 = models.IntegerField(default=0)
     nilai2 = models.IntegerField(default=0)
@@ -65,6 +66,24 @@ class Student(models.Model):
                 self.level = self.rank[i]
 
         super(Student, self).save(*args, **kwargs)
+
+    def net_stat(self):
+        net = self.kepemimpinan + self.nasionalisme + self.kebermanfaatan + self.keilmuan + self.adaptif + self.solidaritas + self.kolaboratif
+        return net
+
+    def tasks_ordered(self):
+        return self.task_set.all().order_by('week', 'detail')
+
+class Task(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    detail = models.CharField(max_length=40, default="")
+    week = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.student.user.first_name + "'s week " + str(self.week) + " " + self.detail + " score"
+
 
 class Angkatan(models.Model):
     angkatan = models.CharField(max_length=20, default="")
