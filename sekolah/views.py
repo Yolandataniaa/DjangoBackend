@@ -98,19 +98,19 @@ def upload(request):
                 usr = None
             
             if usr is not None:
-                usr.student.xp = column[1]
-                usr.student.hp = column[2]
-                usr.student.nilai1 = column[4]
-                usr.student.nilai2 = column[5]
-                usr.student.nilai3 = column[6]
-                usr.student.nilai4 = column[7]
-                usr.student.kepemimpinan = column[8]
-                usr.student.nasionalisme = column[9]
-                usr.student.kebermanfaatan = column[10]
-                usr.student.keilmuan = column[11]
-                usr.student.adaptif = column[12]
-                usr.student.solidaritas = column[13]
-                usr.student.kolaboratif = column[14]
+                usr.student.xp = int(column[1])
+                usr.student.hp = int(column[2])
+                usr.student.nilai1 = int(column[4])
+                usr.student.nilai2 = int(column[5])
+                usr.student.nilai3 = int(column[6])
+                usr.student.nilai4 = int(column[7])
+                usr.student.kepemimpinan = int(column[8])
+                usr.student.nasionalisme = int(column[9])
+                usr.student.kebermanfaatan = int(column[10])
+                usr.student.keilmuan = int(column[11])
+                usr.student.adaptif = int(column[12])
+                usr.student.solidaritas = int(column[13])
+                usr.student.kolaboratif = int(column[14])
 
                 usr.is_active = True
                 usr.save()
