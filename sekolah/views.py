@@ -146,12 +146,14 @@ def mingguan(request):
     current_user = request.user
     usr_list = User.objects.order_by('-student__xpminggu').filter(is_superuser=False)[:10]
 
+    xpminggu_bar = []
     for i in range(len(usr_list)):
-        xpminggu_bar = usr_list[i].student.xpminggu/usr_list[0].student.xpminggu*100
+        xpminggu_bar.append(0)
+        xpminggu_bar[i] = usr_list[i].student.xpminggu/usr_list[0].student.xpminggu*100
         
+    mylist = zip(usr_list, xpminggu_bar)
     context = {
-            'usr_list': usr_list,
-            'xpminggu_bar': xpminggu_bar
+            'mylist': mylist,
         }
     return render(request, template, context)
 
