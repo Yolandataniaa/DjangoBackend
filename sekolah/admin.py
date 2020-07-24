@@ -10,7 +10,7 @@ from .models import Angkatan
 # Register your models here.
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'net_stat', 'hp_pot', 'link_to_tasks')
+    list_display = ('user', 'net_stat', 'hp', 'hp_pot', 'link_to_tasks')
 
     def link_to_tasks(self, obj):
         tasks = obj.task_set.all().order_by('week', 'detail')

@@ -1,0 +1,18 @@
+{{log}}
+You are healing {{target_sname}}. <br>
+You have {{user.student.hp_pot}} potions remaining. <br>
+<form action="" method="post">
+  {% csrf_token %}
+  <label for="amount">Amount:</label>
+  <input
+    type="number"
+    name="count"
+    id="count"
+    placeholder="0"
+  />
+  <input 
+    type="hidden" 
+    name="target" 
+    value="{{target.username}}">
+  <button type="submit" class="btn btn-custom-dark mt-2">Submit</button>
+</form>
