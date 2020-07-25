@@ -10,11 +10,7 @@ class Student(models.Model):
     hp = models.IntegerField(default=100)
     level = models.CharField(max_length=20, default="Sailors")
     hp_pot = models.IntegerField(default=0)
-
-    nilai1 = models.IntegerField(default=0)
-    nilai2 = models.IntegerField(default=0)
-    nilai3 = models.IntegerField(default=0)
-    nilai4 = models.IntegerField(default=0)
+    alive = models.BooleanField(default=True)
 
     kepemimpinan = models.IntegerField(default=0)
     nasionalisme = models.IntegerField(default=0)
@@ -60,19 +56,25 @@ class Student(models.Model):
                 diff = high - low
                 return (100.0 * (self.xp-low))/diff
 
-    def save(self, *args, **kwargs):
-        for i in range(len(self.milestones)):
-            if self.milestones[i] <= self.xp and self.xp < self.milestones[i+1]:
-                self.level = self.rank[i]
-
-        super(Student, self).save(*args, **kwargs)
-
     def net_stat(self):
         net = self.kepemimpinan + self.nasionalisme + self.kebermanfaatan + self.keilmuan + self.adaptif + self.solidaritas + self.kolaboratif
         return net
 
     def tasks_ordered(self):
         return self.task_set.all().order_by('week', 'detail')
+
+    def save(self, *args, **kwargs):
+        for i in range(len(self.milestones)):
+            if self.milestones[i] <= self.xp and self.xp < self.milestones[i+1]:
+                self.level = self.rank[i]
+
+        if self.hp <=0:
+            self.hp = 0
+            self.alive = False
+
+        super(Student, self).save(*args, **kwargs)
+
+    
 
 class Task(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)

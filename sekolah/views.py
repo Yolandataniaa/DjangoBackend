@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Student
 from .models import Angkatan
+from .models import Task
 from .forms import CreateUserForm
 from django.conf.urls.static import static
 from django.db.models import Count
@@ -34,7 +35,7 @@ def registerPage(request):
     context = {'form' : form}
     return render(request, 'sekolah/register.html', context)
 
-def uploadUser(request):
+def upload_user(request):
     if not request.user.is_staff:
         return HttpResponseForbidden ("Only for staffs.")
 
@@ -76,7 +77,7 @@ def uploadUser(request):
 
     return render(request, template, context)
 
-def upload(request):
+def upload_stat(request):
     if not request.user.is_staff:
         return HttpResponseForbidden ("Only for staffs.")
 
@@ -102,18 +103,13 @@ def upload(request):
             if usr is not None:
                 usr.student.xp = int(column[1])
                 usr.student.xpminggu = int(column[2])
-                usr.student.hp = int(column[2])
-                usr.student.nilai1 = int(column[4])
-                usr.student.nilai2 = int(column[5])
-                usr.student.nilai3 = int(column[6])
-                usr.student.nilai4 = int(column[7])
-                usr.student.kepemimpinan = int(column[8])
-                usr.student.nasionalisme = int(column[9])
-                usr.student.kebermanfaatan = int(column[10])
-                usr.student.keilmuan = int(column[11])
-                usr.student.adaptif = int(column[12])
-                usr.student.solidaritas = int(column[13])
-                usr.student.kolaboratif = int(column[14])
+                usr.student.kepemimpinan = int(column[3])
+                usr.student.nasionalisme = int(column[4])
+                usr.student.kebermanfaatan = int(column[5])
+                usr.student.keilmuan = int(column[6])
+                usr.student.adaptif = int(column[7])
+                usr.student.solidaritas = int(column[8])
+                usr.student.kolaboratif = int(column[9])
 
                 usr.is_active = True
                 usr.save()
@@ -126,7 +122,108 @@ def upload(request):
         unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
 
     context = {
-        'order' : 'Order of CSV should be nim, nilai1, nilai2, nilaiminggu3, rapot.',
+        'order' : 'Order of CSV should be nim, xp, xpminggu, kepemimpinan, nasionalisme, kebermanfaatan, keilmuan, adaptif, solidaritas, kolaboratif.',
+        'unsaved' : unsaved_str
+    }
+
+    return render(request, template, context)
+
+def upload_marks(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden ("Only for staffs.")
+
+    csv_file = request.FILES.get('file')
+    unsaved = 0
+    unsaved_str = ""
+    template = "sekolah/upload.html"
+
+    if csv_file is not None:
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, "This is not a csv file")
+
+        data_Set = csv_file.read().decode('UTF-8')
+        io_string = io.StringIO(data_Set)
+        
+        # Parse first line to identify uploaded marks
+        detail_list = next(csv.reader(io_string))
+
+        # Parse individual marks
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            try:
+                usr = User.objects.get(username = column[0])
+            except ObjectDoesNotExist:
+                usr = None
+            
+            if usr is not None:
+                for i in range(1, len(detail_list), 2):
+                    try:
+                        task = Task.objects.get(
+                            student=usr.student, 
+                            detail=detail_list[i],
+                            week=detail_list[i+1])
+                    except ObjectDoesNotExist:
+                        task = Task(
+                            student=usr.student, 
+                            detail=detail_list[i],
+                            week=detail_list[i+1])
+                    
+                    task.score = int(column[i])
+                    task.save()
+
+            else:
+                unsaved = unsaved + 1
+
+    if unsaved > 0 :
+        unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
+
+    context = {
+        'order' : 'Order of CSV should be nim, <task 1s score>, <task 1s week>, <task 2s score>, <task 2s week>, etc..',
+        'unsaved' : unsaved_str
+    }
+
+    return render(request, template, context)
+
+def upload_damage(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden ("Only for staffs.")
+
+    csv_file = request.FILES.get('file')
+    unsaved = 0
+    unsaved_str = ""
+    template = "sekolah/upload.html"
+
+    if csv_file is not None:
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, "This is not a csv file")
+
+        data_Set = csv_file.read().decode('UTF-8')
+        io_string = io.StringIO(data_Set)
+        
+        # Parse first line to identify uploaded marks
+        detail_list = next(csv.reader(io_string))
+
+        # Parse individual marks
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            try:
+                usr = User.objects.get(username = column[0])
+            except ObjectDoesNotExist:
+                usr = None
+            
+            if usr is not None:
+                usr.student.hp -= int(column[1])
+
+                usr.is_active = True
+                usr.save()
+                usr.student.save()
+
+            else:
+                unsaved = unsaved + 1
+
+    if unsaved > 0 :
+        unsaved_str = "There are " + str(unsaved) + " unsaved data from previous upload"
+
+    context = {
+        'order' : format_html('For mass-damaging.<br>Order of CSV should be nim, damage.'),
         'unsaved' : unsaved_str
     }
 

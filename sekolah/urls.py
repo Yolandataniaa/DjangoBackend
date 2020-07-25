@@ -2,8 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('upload-csv/', views.upload, name='upload'),
-    path('upload-user/', views.uploadUser, name='uploadUser'),
+    path('upload/stat/', views.upload_stat, name='upload'),
+    path('upload/marks/', views.upload_marks, name='uploadMarks'),
+    path('upload/damage/', views.upload_damage, name='uploadDamage'),
+    path('upload/user/', views.upload_user, name='uploadUser'),
     path('leaderboard/', views.leaderboard, name = 'leaderboard'),
     path('leaderboard-mingguan/', views.mingguan, name = 'mingguan'),
     path('profile/', views.profile, name='profile'),
