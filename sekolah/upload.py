@@ -148,7 +148,7 @@ def upload_marks(request):
                             detail=detail_list[i],
                             week=detail_list[i+1])
                     
-                    task.score = int(column[i])
+                    task.score = int('0' + column[i])
                     task.save()
 
             else:
