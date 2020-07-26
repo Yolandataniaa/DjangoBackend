@@ -108,8 +108,12 @@ def heal(request):
         # Error checking
         if heal_int > request.user.student.hp_pot:
             log = format_html("You lack health potions. <br>" + log)
+        elif heal_int < 0:
+            log = format_html("Don't even think about it. <br>" + log)
         elif target.student.hp + heal_amt > 100:
             log = format_html("You can't heal past maximum health. <br>" + log)  
+        elif target.alive == False:
+            log = format_html("The student you tried to heal is awaiting judgment. <br>" + log)  
         else:
             if target.username == request.user.username:
                 request.user.student.hp += heal_amt
@@ -132,7 +136,7 @@ def heal(request):
         target = User.objects.get(username = target_uname)
     except ObjectDoesNotExist:
         target = request.user
-        log = format_html("The user you are trying to heal does not exist. <br>")
+        log = format_html("The user you are trying to heal does not exist.<br>You'll be healing yourself instead.<br>" + log)
 
     if request.user == target:
         target_sname = "yourself"

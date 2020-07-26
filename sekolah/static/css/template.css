@@ -60,6 +60,13 @@ main h1 {
   margin-bottom: 1rem;
 }
 
+main h4 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 /* Footer */
 footer {
   background-color: var(--custom);
