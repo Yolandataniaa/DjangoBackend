@@ -1,18 +1,69 @@
-{{log}}
-You are healing {{target_sname}}. <br>
-You have {{user.student.hp_pot}} potions remaining. <br>
-<form action="" method="post">
-  {% csrf_token %}
-  <label for="amount">Amount:</label>
-  <input
-    type="number"
-    name="count"
-    id="count"
-    placeholder="0"
-  />
-  <input 
-    type="hidden" 
-    name="target" 
-    value="{{target.username}}">
-  <button type="submit" class="btn btn-custom-dark mt-2">Submit</button>
-</form>
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+<link rel="stylesheet" href="{% static 'css/heal.css' %}" />
+{% endblock css %}
+
+{% block main %}
+<main class="flex-shrink-0" role="main">
+  <div class="container content">
+    <h1>Heal</h1>
+    <div class="row justify-content-center">
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+        <div class="card">
+          <img
+            class="card-img-top rounded-circle img-thumbnail mx-auto mt-3"
+            src="{% static "img/foto/"|add:user.username|add:".jpg" %}"
+            alt="pic"
+          />
+          <div
+            class="card-body d-flex flex-column justify-content-end align-items-center pt-2"
+          >
+            <h5 class="card-title text-center mb-0">{{ user.last_name }}</h5>
+            <div class="container d-flex flex-column pt-3">
+              <div class="d-flex justify-content-center mb-2">
+                <div class="d-flex flex-column align-items-center mx-3">
+                  <img
+                    class="level-img d-block mb-2"
+                    src="{% static "icon/level/"|add:user.student.level|add:".png" %}"
+                    alt="level"
+                  />
+                  <span class="badge badge-pill badge-sm">{{ user.student.level }}</span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mx-3">
+                  <img src="{% static 'icon/potion.svg' %}" alt="potion" height="40">
+                  <span class="badge heal ml-2">{{ user.student.hp_pot }}</span>
+                </div>
+              </div>
+              <form action="" method="POST" class="mt-3 mb-2">
+                <span>Jumlah</span>
+                <input
+                  type="number"
+                  name="count"
+                  id="count"
+                  min="0"
+                  placeholder="0"
+                  class="ml-2"
+                />
+                <input
+                  type="hidden"
+                  name="target"
+                  value="{{ target.username }}"
+                />
+                <button type="submit" class="btn heal ml-3">
+                  Heal
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main %}
+
+{% block js %}
+{% endblock js %}

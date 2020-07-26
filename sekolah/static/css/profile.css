@@ -61,17 +61,3 @@ h5.bar {
   background-color: #ddd;
   border-radius: 5px;
 }
-
-.heal {
-  background-color: #36b90e;
-  color: #fff;
-  line-height: 15px !important;
-  font-size: 1.1rem;
-  padding: 0.5rem;
-  transition: 0.15s;
-}
-
-.heal.btn:hover {
-  opacity: 75%;
-  color: #fff;
-}

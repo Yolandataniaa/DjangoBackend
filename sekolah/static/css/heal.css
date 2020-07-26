@@ -1,0 +1,26 @@
+.heal {
+  background-color: #36B90E;
+  color: #fff;
+  line-height: 15px !important;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  transition: .15s;
+}
+
+.heal.btn:hover {
+  opacity: 75%;
+  color: #fff;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: rgb(116, 7, 7);
+  width: 3rem;
+}
