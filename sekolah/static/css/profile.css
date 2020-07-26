@@ -63,12 +63,12 @@ h5.bar {
 }
 
 .heal {
-  background-color: #36B90E;
+  background-color: #36b90e;
   color: #fff;
   line-height: 15px !important;
   font-size: 1.1rem;
   padding: 0.5rem;
-  transition: .15s;
+  transition: 0.15s;
 }
 
 .heal.btn:hover {
