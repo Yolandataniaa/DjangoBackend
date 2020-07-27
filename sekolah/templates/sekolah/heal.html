@@ -16,22 +16,22 @@
         <div class="card">
           <img
             class="card-img-top rounded-circle img-thumbnail mx-auto mt-3"
-            src="{% static "img/foto/"|add:user.username|add:".jpg" %}"
+            src="{% static "img/foto/"|add:target.username|add:".jpg" %}"
             alt="pic"
           />
           <div
             class="card-body d-flex flex-column justify-content-end align-items-center pt-2"
           >
-            <h5 class="card-title text-center mb-0">{{ user.last_name }}</h5>
+            <h5 class="card-title text-center mb-0">{{ target.last_name }}</h5>
             <div class="container d-flex flex-column pt-3">
               <div class="d-flex justify-content-center mb-2">
                 <div class="d-flex flex-column align-items-center mx-3">
                   <img
                     class="level-img d-block mb-2"
-                    src="{% static "icon/level/"|add:user.student.level|add:".png" %}"
+                    src="{% static "icon/level/"|add:target.student.level|add:".png" %}"
                     alt="level"
                   />
-                  <span class="badge badge-pill badge-sm">{{ user.student.level }}</span>
+                  <span class="badge badge-pill badge-sm">{{ target.student.level }}</span>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mx-3">
                   <img src="{% static 'icon/potion.svg' %}" alt="potion" height="40">
