@@ -71,6 +71,8 @@ class Student(models.Model):
         if self.hp <=0:
             self.hp = 0
             self.alive = False
+        elif self.hp > 0:
+            self.alive = True
 
         super(Student, self).save(*args, **kwargs)
 
@@ -98,20 +100,17 @@ class Angkatan(models.Model):
     milestones = [
         0,
         1000,
-        3800,
-        9000,
-        17000,
-        28800,
-        100000
+        2000,
+        3000,
+        4000,
+        10000
     ]
 
     rank =[
-        "Sailors",
-        "Gunners",
-        "Boatswain",
-        "Lieutenants",
-        "Sailing Master",
-        "First Mate",
+        "Corsario",
+        "Bucanero",
+        "Filibustero",
+        "Engage",
     ]
 
     def xp_current(self):

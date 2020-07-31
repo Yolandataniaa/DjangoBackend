@@ -10,8 +10,8 @@
 <main class="flex-shrink-0" role="main">
   <div class="container content">
     <h1 class="mb-0">Nilai</h1>
-    <h2 class="text-center mb-3">Minggu ke-1</h2>
-    <div class="row justify-content-center">
+    {% if user.student.alive == True %}
+      <div class="row justify-content-center">
       <div class="col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
         <div class="card" style="width: 18rem;">
           <img
@@ -166,7 +166,13 @@
           </tbody>
         </table>            
       </div>
-    </div>
+      </div>
+    {% else %}
+      <br>
+      <img class="center" width="100%" src="https://i.ytimg.com/vi/Kr9rIx7MVvg/maxresdefault.jpg">
+      <br>
+      <h2 class="text-center mb-3">>:(</h2>
+    {% endif %}
   </div>
 </main>
 {% endblock main %}
