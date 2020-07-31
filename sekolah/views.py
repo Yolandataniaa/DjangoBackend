@@ -112,7 +112,7 @@ def heal(request):
             log = format_html("Don't even think about it. <br>" + log)
         elif target.student.hp + heal_amt > 100:
             log = format_html("You can't heal past maximum health. <br>" + log)  
-        elif target.alive == False:
+        elif target.student.alive == False:
             log = format_html("The student you tried to heal is awaiting judgment. <br>" + log)  
         else:
             if target.username == request.user.username:
