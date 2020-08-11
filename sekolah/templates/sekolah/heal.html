@@ -40,23 +40,26 @@
               </div>
               <form action="" method="POST" class="mt-3 mb-2">
                 {% csrf_token %}
-                <span>Jumlah</span>
-                <input
-                  type="number"
-                  name="count"
-                  id="count"
-                  min="0"
-                  placeholder="0"
-                  class="ml-2"
-                />
-                <input
-                  type="hidden"
-                  name="target"
-                  value="{{ target.username }}"
-                />
-                <button type="submit" class="btn heal ml-3">
-                  Heal
-                </button>
+                <textarea name="message" id="message" placeholder="Kirim pesan ke {{ target.first_name }}" class="mb-3"></textarea>
+                <div class="d-flex justify-content-center align-items-center">
+                  <span>Jumlah</span>
+                  <input
+                    type="number"
+                    name="count"
+                    id="count"
+                    min="0"
+                    placeholder="0"
+                    class="ml-2"
+                  />
+                  <input
+                    type="hidden"
+                    name="target"
+                    value="{{ target.username }}"
+                  />
+                  <button type="submit" class="btn heal ml-3">
+                    Heal
+                  </button>
+                </div>
               </form>
             </div>
           </div>
