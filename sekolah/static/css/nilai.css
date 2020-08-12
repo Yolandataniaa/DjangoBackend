@@ -1,10 +1,11 @@
-h4 {
-  font-family: "piratesbayregular", cursive;
-  margin: 0;
-}
-
 .profile-content {
   width: 18rem;
+}
+
+.profile-content h4 {
+  font-family: "piratesbayregular", cursive;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .profile-content .progress {
@@ -98,4 +99,42 @@ table th {
 
 table td {
   text-align: right;
+}
+
+.message-container {
+  background-color: var(--custom) !important;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.message-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+
+.message-sender {
+  font-family: "piratesbay", cursive;
+  font-weight: normal;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+  margin: 0 0 0.25rem;
+}
+
+.message-form {
+  display: flex;
+  width: 100%;
+}
+
+.message-form textarea {
+  background-color: #fff;
+  color: #000;
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border-radius: 0.2rem;
+  width: 100%;
 }
