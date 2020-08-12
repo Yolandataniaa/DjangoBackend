@@ -102,6 +102,9 @@ def heal(request):
     # Database interfacing, POST logic. Kicks in after submitting when POST data is present.
     messages = request.POST.get('message', "")
     heal_target = request.POST.get('target', "")
+
+    KirimPesan.objects.create(pengirim=request.user, penerima=heal_target, pesan=messages)
+    
     pot_count = request.POST.get('count', "")
     if not (heal_target == "" or pot_count == "" ) and int(pot_count) > 0:
         target = User.objects.get(username = heal_target)
