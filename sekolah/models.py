@@ -136,8 +136,8 @@ class Angkatan(models.Model):
         super(Angkatan, self).save(*args, **kwargs)
 
 class KirimPesan(models.Model):
-    pengirim = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='pengirim', null=True)
-    penerima = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='spenerima', null=True)
+    pengirim = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pengirim', null=True)
+    penerima = models.ForeignKey(User, on_delete=models.CASCADE, related_name='penerima', null=True)
 
     potion = models.IntegerField(default=0)
     pesan = models.CharField(max_length=40, default="Ketik pesan disini")

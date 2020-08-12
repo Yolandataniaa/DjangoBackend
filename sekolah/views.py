@@ -100,11 +100,17 @@ def heal(request):
     log = ""
 
     # Database interfacing, POST logic. Kicks in after submitting when POST data is present.
-    messages = request.POST.get('message', "")
     heal_target = request.POST.get('target', "")
 
-    KirimPesan.objects.create(pengirim=request.user, penerima=heal_target, pesan=messages)
+    kirim_pesan = KirimPesan()
+    kirim_pesan.penerima = User.objects.get(username = heal_target)
+    kirim_pesan.pengirim = request.user.username
     
+    messages = request.POST.get('message', "")
+
+    kirim_pesan.objects.create(pesan=messages)
+    kirim_pesan.save()
+
     pot_count = request.POST.get('count', "")
     if not (heal_target == "" or pot_count == "" ) and int(pot_count) > 0:
         target = User.objects.get(username = heal_target)
