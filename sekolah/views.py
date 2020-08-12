@@ -9,6 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Student
 from .models import Angkatan
 from .models import Task
+from .models import KirimPesan
 from .forms import CreateUserForm
 from django.conf.urls.static import static
 from django.db.models import Count
@@ -91,6 +92,7 @@ def nilai(request):
 def landing(request):
     return HttpResponseRedirect(reverse('leaderboard'))
 
+
 def heal(request):
     target = None
     target_uname = ""
@@ -98,10 +100,12 @@ def heal(request):
     log = ""
 
     # Database interfacing, POST logic. Kicks in after submitting when POST data is present.
+    messages = request.POST.get('message', "")
     heal_target = request.POST.get('target', "")
     pot_count = request.POST.get('count', "")
     if not (heal_target == "" or pot_count == "" ) and int(pot_count) > 0:
         target = User.objects.get(username = heal_target)
+        message = KirimPesan.objects.get(pesan = messages)
         heal_int = int(pot_count)
         heal_amt = heal_int * 2
 

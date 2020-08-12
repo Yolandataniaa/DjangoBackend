@@ -6,6 +6,7 @@ from django.contrib import admin
 from .models import Student
 from .models import Task
 from .models import Angkatan
+from .models import KirimPesan
 
 # Register your models here.
 
@@ -33,5 +34,6 @@ class TaskAdmin(admin.ModelAdmin):
         return HttpResponseRedirect(reverse("admin:sekolah_student_changelist"))
 
 admin.site.register(Angkatan)
+admin.site.register(KirimPesan)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Student, StudentAdmin)
