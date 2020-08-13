@@ -101,23 +101,21 @@ def heal(request):
 
     # Database interfacing, POST logic. Kicks in after submitting when POST data is present.
     heal_target = request.POST.get('target', "")
-
-    kirim_pesan = KirimPesan()
-    kirim_pesan.penerima = User.objects.get(username = heal_target)
-    kirim_pesan.pengirim = request.user.username
-    
+    pot_count = request.POST.get('count', "")
     messages = request.POST.get('message', "")
 
-    kirim_pesan.objects.create(pesan=messages)
-    kirim_pesan.save()
-
-    pot_count = request.POST.get('count', "")
     if not (heal_target == "" or pot_count == "" ) and int(pot_count) > 0:
         target = User.objects.get(username = heal_target)
-        message = KirimPesan.objects.get(pesan = messages)
+        
         heal_int = int(pot_count)
         heal_amt = heal_int * 2
 
+        penerima = User.objects.get(username = heal_target)
+        user = request.user.username
+        pengirim = User.objects.get(username = user)
+        KirimPesan.objects.create(pengirim = pengirim, penerima = penerima, potion = pot_count, pesan=messages)
+
+        # message = KirimPesan.objects.get(pesan = messages)
         # Error checking
         if heal_int > request.user.student.hp_pot:
             log = format_html("You lack health potions. <br>" + log)
@@ -125,7 +123,7 @@ def heal(request):
             log = format_html("Don't even think about it. <br>" + log)
         elif target.student.hp + heal_amt > 100:
             log = format_html("You can't heal past maximum health. <br>" + log)  
-        elif target.alive == False:
+        elif target.student.alive == False:
             log = format_html("The student you tried to heal is awaiting judgment. <br>" + log)  
         else:
             if target.username == request.user.username:
