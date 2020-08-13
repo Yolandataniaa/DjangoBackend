@@ -171,28 +171,30 @@
         <div class="col-9 col-md-6 col-lg-5 col-xl-4">
           <div class="message-container">
             <!-- message-item yang dilooping -->
+            {% for pesan in pesan_masuk%}
             <div class="message-item">
+              <h4 class="message-sender">{{pesan.pengirim.last_name}}</h4>
+              <form class="message-form">
+                {% csrf_token %}
+                <textarea name="message" id="message" disabled class="rounded mr-2">{{pesan.pesan}}</textarea>
+                <div class="btn-group-vertical" role="group">
+                  <button type="submit" name="accept" value="accept" class="btn btn-custom-light">Terima</button>
+                  <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
+                </div>
+              </form>
+            </div>
+            {%endfor%}
+            <!-- <div class="message-item">
               <h4 class="message-sender">Jayanti Metta Carini</h4>
               <form class="message-form">
                 {% csrf_token %}
                 <textarea name="message" id="message" disabled class="rounded mr-2">Ini aku kasi 2 potion buat kamu</textarea>
                 <div class="btn-group-vertical" role="group">
-                  <button type="submit" name="submit" value="accept" class="btn btn-custom-light">Terima</button>
-                  <button type="submit" name="submit" value="decline" class="btn btn-custom-outline">Tolak</button>
+                  <button type="submit" name="accept" value="accept" class="btn btn-custom-light">Terima</button>
+                  <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
                 </div>
               </form>
-            </div>
-            <div class="message-item">
-              <h4 class="message-sender">Jayanti Metta Carini</h4>
-              <form class="message-form">
-                {% csrf_token %}
-                <textarea name="message" id="message" disabled class="rounded mr-2">Ini aku kasi 2 potion buat kamu</textarea>
-                <div class="btn-group-vertical" role="group">
-                  <button type="submit" name="submit" value="accept" class="btn btn-custom-light">Terima</button>
-                  <button type="submit" name="submit" value="decline" class="btn btn-custom-outline">Tolak</button>
-                </div>
-              </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
