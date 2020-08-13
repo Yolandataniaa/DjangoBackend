@@ -178,6 +178,11 @@
                 {% csrf_token %}
                 <textarea name="message" id="message" disabled class="rounded mr-2">{{pesan.pesan}}</textarea>
                 <div class="btn-group-vertical" role="group">
+                  <input
+                    type="hidden"
+                    name="target"
+                    value="{{pesan.id}}"
+                  />
                   <button type="submit" name="accept" value="accept" class="btn btn-custom-light">Terima</button>
                   <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
                 </div>
