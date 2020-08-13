@@ -140,7 +140,8 @@ class KirimPesan(models.Model):
     penerima = models.ForeignKey(User, on_delete=models.CASCADE, related_name='penerima', null=True)
 
     potion = models.IntegerField(default=0)
-    pesan = models.CharField(max_length=40, default="Ketik pesan disini")
+    pesan = models.CharField(max_length=40, default="Tidak ada pesan")
+    read = models.BooleanField(default=False)
 
 # class NilaiMinggu1(models.Model):
 #     student = models.OneToOneField(Student, on_delete = models.CASCADE)

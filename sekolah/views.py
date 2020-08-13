@@ -84,8 +84,26 @@ def nilai(request):
 
     current_user = request.user
     template = "sekolah/nilai.html"
+
+    pesan_masuk = KirimPesan.objects.filter(penerima = current_user, read = False)
+
+    if (len(pesan_masuk)>0) and (KirimPesan.read == False):
+        for i in range (len(pesan_masuk)):
+            sender = pesan_masuk[i].pengirim
+            int_potion = int(pesan_masuk[i].potion)
+            heal_amt = int_potion * 2
+            if request.POST.get("accept"):
+                KirimPesan.objects.update(read = True)
+                request.user.student.hp += heal_amt
+                sender.user.student.hp_pot -= heal_int
+                request.user.student.save()
+                sender.user.student.save()
+            elif request.POST.get("decline"):
+                KirimPesan.objects.create(read = True)
+
     context = {
         'user': current_user,
+        'pesan_masuk' :pesan_masuk,
     }    
     return render(request, template, context)
 
@@ -110,11 +128,6 @@ def heal(request):
         heal_int = int(pot_count)
         heal_amt = heal_int * 2
 
-        penerima = User.objects.get(username = heal_target)
-        user = request.user.username
-        pengirim = User.objects.get(username = user)
-        KirimPesan.objects.create(pengirim = pengirim, penerima = penerima, potion = pot_count, pesan=messages)
-
         # message = KirimPesan.objects.get(pesan = messages)
         # Error checking
         if heal_int > request.user.student.hp_pot:
@@ -126,12 +139,16 @@ def heal(request):
         elif target.student.alive == False:
             log = format_html("The student you tried to heal is awaiting judgment. <br>" + log)  
         else:
-            if target.username == request.user.username:
-                request.user.student.hp += heal_amt
-            else:
-                # Somehow doesn't work properly if target is the same as request user
-                target.student.hp += heal_amt
-                target.student.save()
+            penerima = User.objects.get(username = heal_target)
+            user = request.user.username
+            pengirim = User.objects.get(username = user)
+            KirimPesan.objects.create(pengirim = pengirim, penerima = penerima, potion = pot_count, pesan=messages)
+            # if target.username == request.user.username:
+            #     request.user.student.hp += heal_amt
+            # else:
+            #     # Somehow doesn't work properly if target is the same as request user
+            #     target.student.hp += heal_amt
+            #     target.student.save()
 
             request.user.student.hp_pot -= heal_int
             request.user.student.save()
