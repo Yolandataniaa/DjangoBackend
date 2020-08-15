@@ -11,6 +11,7 @@ class Student(models.Model):
     level = models.CharField(max_length=20, default="Sailors")
     hp_pot = models.IntegerField(default=0)
     alive = models.BooleanField(default=True)
+    jumlahpotion = models.IntegerField(default=0)
 
     kepemimpinan = models.IntegerField(default=0)
     nasionalisme = models.IntegerField(default=0)
@@ -133,6 +134,13 @@ class Angkatan(models.Model):
                 self.level = self.rank[i]
 
         super(Angkatan, self).save(*args, **kwargs)
+
+class KirimPesan(models.Model):
+    pengirim = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pengirim', null=True)
+    penerima = models.ForeignKey(User, on_delete=models.CASCADE, related_name='penerima', null=True)
+
+    potion = models.IntegerField(default=0)
+    pesan = models.CharField(max_length=40, default="Ketik pesan disini")
 
 # class NilaiMinggu1(models.Model):
 #     student = models.OneToOneField(Student, on_delete = models.CASCADE)

@@ -60,3 +60,13 @@ body {
 .btn-custom-dark:hover {
   background-color: var(--custom-hover);
 }
+
+.btn-custom-outline {
+  border: 1px solid #fff !important;
+  color: #fff !important;
+}
+
+.btn-custom-outline:hover {
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(255, 255, 255, 0.9);
+}
