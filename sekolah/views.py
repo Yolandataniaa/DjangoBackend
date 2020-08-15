@@ -82,29 +82,35 @@ def nilai(request):
     if not request.user.is_authenticated:
         return HttpResponseForbidden ("nope.")
 
-    current_user = request.user
     template = "sekolah/nilai.html"
     
     if request.POST.get('accept',""):
-        accepted = KirimPesan.objects.get(id = request.POST.get('id',""))
-        int_potion = int(accepted.potion)
-        heal_amt = int_potion * 2
-        sender = accepted.pengirim
+        accepted = request.user.accepted_heals.get(id = request.POST.get('heal_id',""))
 
-        accepted.objects.update(read = True)
-        request.user.student.hp += heal_amt
-        sender.student.hp_pot -= heal_int
-        request.user.student.save()
-        sender.student.save()
+        if(accepted.valid() and not accepted.read):
+            accepted.read = True
+            accepted.penerima.student.hp += accepted.heal()
+            # sender.student.hp_pot -= heal_int
+            # harusnya dikurangi saat ngasih healnya
+
+            accepted.save()
+            accepted.penerima.student.save()
 
     elif request.POST.get('decline',""):
-        declined = KirimPesan.objects.get(id = request.POST.get('id',""))
-        declined.objects.update(read = True)
+        declined = request.user.accepted_heals.get(id = request.POST.get('heal_id',""))
+        
+        if(not declined.read):
+            declined.read = True
+            declined.pengirim.student.hp_pot += declined.potion
 
-    pesan_masuk = KirimPesan.objects.filter(penerima = current_user, read = False)
+            declined.save()
+            declined.pengirim.student.save()
+
+    #pesan_masuk = KirimPesan.objects.filter(penerima = current_user, read = False)
+    pesan_masuk = request.user.accepted_heals.filter(read = False)
 
     context = {
-        'user': current_user,
+        'user': request.user,
         'pesan_masuk' :pesan_masuk,
     }    
     return render(request, template, context)
@@ -122,7 +128,7 @@ def heal(request):
     # Database interfacing, POST logic. Kicks in after submitting when POST data is present.
     heal_target = request.POST.get('target', "")
     pot_count = request.POST.get('count', "")
-    messages = request.POST.get('message', "")
+    message = request.POST.get('message', "")
 
     if not (heal_target == "" or pot_count == "" ) and int(pot_count) > 0:
         target = User.objects.get(username = heal_target)
@@ -141,20 +147,12 @@ def heal(request):
             log = format_html("The student you tried to heal is awaiting judgment. <br>" + log)  
         else:
             penerima = User.objects.get(username = heal_target)
-            user = request.user.username
-            pengirim = User.objects.get(username = user)
-            KirimPesan.objects.create(pengirim = pengirim, penerima = penerima, potion = pot_count, pesan=messages)
-            # if target.username == request.user.username:
-            #     request.user.student.hp += heal_amt
-            # else:
-            #     # Somehow doesn't work properly if target is the same as request user
-            #     target.student.hp += heal_amt
-            #     target.student.save()
+            KirimPesan.objects.create(pengirim = request.user, penerima = penerima, potion = pot_count, pesan=message)
 
             request.user.student.hp_pot -= heal_int
             request.user.student.save()
 
-            log = format_html("Healed " + heal_target + " for " + str(heal_int) + " pots.<br>" + log)
+            log = format_html("Sent heal to " + heal_target + " for " + str(heal_int) + " pots. <br>" + log)
 
     # Web interfacing, GET logic.
     target_uname = str(request.GET.get('target', ""))

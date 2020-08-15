@@ -104,6 +104,7 @@ table td {
 .message-container {
   background-color: var(--custom) !important;
   border-radius: 0.25rem;
+  color: #fff;
   padding: 1rem;
 }
 
@@ -114,7 +115,7 @@ table td {
 }
 
 .message-sender {
-  font-family: "piratesbay", cursive;
+  font-family: "piratesbayregular", cursive;
   font-weight: normal;
   color: #fff;
   text-align: left;

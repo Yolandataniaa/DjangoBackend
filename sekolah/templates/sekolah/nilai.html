@@ -171,35 +171,34 @@
         <div class="col-9 col-md-6 col-lg-5 col-xl-4">
           <div class="message-container">
             <!-- message-item yang dilooping -->
-            {% for pesan in pesan_masuk%}
-            <div class="message-item">
-              <h4 class="message-sender">{{pesan.pengirim.last_name}}</h4>
-              <form class="message-form">
-                {% csrf_token %}
-                <textarea name="message" id="message" disabled class="rounded mr-2">{{pesan.pesan}}</textarea>
-                <div class="btn-group-vertical" role="group">
-                  <input
-                    type="hidden"
-                    name="target"
-                    value="{{pesan.id}}"
-                  />
-                  <button type="submit" name="accept" value="accept" class="btn btn-custom-light">Terima</button>
-                  <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
-                </div>
-              </form>
-            </div>
-            {%endfor%}
-            <!-- <div class="message-item">
-              <h4 class="message-sender">Jayanti Metta Carini</h4>
-              <form class="message-form">
-                {% csrf_token %}
-                <textarea name="message" id="message" disabled class="rounded mr-2">Ini aku kasi 2 potion buat kamu</textarea>
-                <div class="btn-group-vertical" role="group">
-                  <button type="submit" name="accept" value="accept" class="btn btn-custom-light">Terima</button>
-                  <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
-                </div>
-              </form>
-            </div> -->
+            {% if pesan_masuk %}
+              {% for pesan in pesan_masuk%}
+              <div class="message-item">
+                <h4 class="message-sender">{{pesan.pengirim.last_name}}</h4>
+                <form class="message-form" method="POST">
+                  {% csrf_token %}
+                  <textarea name="message" id="message" disabled class="rounded mr-2">{{pesan.pesan}}{% if pesan.valid is False%} (You can't accept this heal.){% endif %}
+                  </textarea>
+                  <div class="btn-group-vertical" role="group">
+                    <input
+                      type="hidden"
+                      name="heal_id"
+                      value="{{pesan.id}}"
+                    />
+                    <button 
+                      type="submit" 
+                      name="accept"
+                      value="accept" 
+                      class="btn btn-custom-light" 
+                      {% if pesan.valid is False%}disabled{% endif %}>+{{pesan.heal}}HP</button>
+                    <button type="submit" name="decline" value="decline" class="btn btn-custom-outline">Tolak</button>
+                  </div>
+                </form>
+              </div>
+              {%endfor%}
+            {% else %}
+              <h4 class="center">No new message.</h4>
+            {% endif %}
           </div>
         </div>
       </div>

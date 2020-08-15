@@ -33,7 +33,10 @@ class TaskAdmin(admin.ModelAdmin):
     def response_change(self, request, obj, post_url_continue=None):
         return HttpResponseRedirect(reverse("admin:sekolah_student_changelist"))
 
+class PesanAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'read', 'potion')
+
 admin.site.register(Angkatan)
-admin.site.register(KirimPesan)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Student, StudentAdmin)
+admin.site.register(KirimPesan, PesanAdmin)

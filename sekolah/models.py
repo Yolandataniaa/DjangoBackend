@@ -136,13 +136,21 @@ class Angkatan(models.Model):
         super(Angkatan, self).save(*args, **kwargs)
 
 class KirimPesan(models.Model):
-    pengirim = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pengirim', null=True)
-    penerima = models.ForeignKey(User, on_delete=models.CASCADE, related_name='penerima', null=True)
+    pengirim = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_heals', null=True)
+    penerima = models.ForeignKey(User, on_delete=models.CASCADE, related_name='accepted_heals', null=True)
 
     potion = models.IntegerField(default=0)
     pesan = models.CharField(max_length=40, default="Tidak ada pesan")
     read = models.BooleanField(default=False)
 
+    def valid(self):
+        return self.penerima.student.hp + self.heal() <= 100
+
+    def heal(self):
+        return self.potion * 2
+
+    def __str__(self):
+        return self.pengirim.first_name + " to " + self.penerima.first_name
 # class NilaiMinggu1(models.Model):
 #     student = models.OneToOneField(Student, on_delete = models.CASCADE)
 
